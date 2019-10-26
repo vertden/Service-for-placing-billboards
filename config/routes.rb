@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+  # devise_for :users
+  # scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+    devise_for :users, controllers: {
+        confirmations: 'confirmations'
+    }
+  resources :billboards
+  root 'billboards#index', as: 'home'
+
+  end
