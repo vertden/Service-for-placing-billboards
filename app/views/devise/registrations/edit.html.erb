@@ -17,7 +17,6 @@
 
 
   <div class="row justify-content-center"">
-  <!--    <%#= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />-->
   <%= f.password_field :password, {autocomplete: "current-password",
                                    :class=>"mb-3 col-3 form-control",
                                    :placeholder => t("devise.registrations.edit.current_password")}%>
