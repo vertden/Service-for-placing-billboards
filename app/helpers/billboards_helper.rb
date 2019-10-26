@@ -1,2 +1,2 @@
-module BillboardHelper
+module BillboardsHelper
 end
