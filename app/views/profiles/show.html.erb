@@ -1,0 +1,26 @@
+<body>
+<h1 class="text-center"><%= t("profile.show.title") %></h1>
+<div class="container">
+  <div class="row" style="background-image: url(/profile_bg.gif); background-size: cover;">
+    <div class="col-3" style="margin-top: 2%;">
+      <% if @profile.avatar? %>
+        <p><%= image_tag @profile.avatar, :style => "border-radius: 50%;" %></p>
+      <% else %>
+        <p><%= image_tag "/avatar.jpeg", :style => "border-radius: 50%;" %></p>
+      <% end %>
+    </div>
+    <div class="col-5">
+      <h3 class="text-left" style="color:white; margin-top: 20%;">
+        <strong>
+          <%= @profile.first_name %>
+          <%= @profile.second_name %>
+        </strong>
+      </h3>
+      <%= link_to t("profile.show.edit"), edit_profile_path, {:style => 'color:white;', :class => "btn btn-secondary"} %>
+      <%= link_to t("profile.show.edit_password"), edit_user_registration_path, {:style => 'color:white;', :class => "btn btn-secondary"} %>
+    </div>
+  </div>
+</div>
+<hr>
+</body>
+

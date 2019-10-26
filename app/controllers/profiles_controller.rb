@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @languages = %w(English Русский)
   end
 
   def update

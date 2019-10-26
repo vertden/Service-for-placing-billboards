@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     }
     resources :billboards
     root 'billboards#index', as: 'home'
+    resource :profile
   end
 end
