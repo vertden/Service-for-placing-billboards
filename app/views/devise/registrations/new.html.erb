@@ -1,29 +1,45 @@
-<h2>Sign up</h2>
 
+<body class="text-center">
+<h1 class="h3 mt-5 mb-3 font-weight-normal"><%= t("devise.registrations.new.title") %></h1>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row justify-content-center">
+    <%= f.telephone_field :phone_number, {autocomplete: "phone_number",
+                                    :class=>"col-3 mb-3 form-control",
+                                  :placeholder=>t("devise.registrations.new.first_name")} %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="row justify-content-center">
+    <%= f.email_field :email, {autofocus: true,autocomplete: "email",
+                               :class=>"col-3 mb-3 form-control",
+                               :placeholder=>t("devise.registrations.new.email")} %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="row justify-content-center">
+    <%# if @minimum_password_length %>
+    <!--      <em>(<%#= @minimum_password_length %> characters minimum)</em>-->
+    <!--    <%# end %><br />-->
+    <%= f.password_field :password, {autocomplete: "new-password",
+                                     :class=>"mb-3 col-3 form-control",
+                                     :placeholder => t("devise.registrations.new.password")}%>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="row justify-content-center">
+    <%= f.password_field :password_confirmation, {autocomplete: "new-password",
+                                                  :class=>"mb-3 col-3 form-control",
+                                                  :placeholder => t("devise.registrations.new.confirm_password")}%>
+  </div>
+
+  <div >
+    <%= f.submit t("devise.registrations.new.submit"),{:class => "mb-2 btn btn-success"} %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</body>
+</html>
+
+
+
+
+
