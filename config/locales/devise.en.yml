@@ -87,8 +87,7 @@ en:
         back: "Back"
       new:
         title: "Sign up"
-        first_name: "First name"
-        second_name: "Second name"
+        phone_number: "Phone"
         email: "Email address"
         password: "Password"
         confirm_password: "Confirm password"

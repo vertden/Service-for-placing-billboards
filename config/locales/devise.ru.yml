@@ -83,8 +83,7 @@ ru:
         back: "Назад"
       new:
         title: "Регистрация"
-        first_name: "Имя"
-        second_name: "Фамилия"
+        phone_number: "Телефон"
         email: "Адрес электронной почты"
         password: "Пароль"
         confirm_password: "Подтвердите Пароль"
