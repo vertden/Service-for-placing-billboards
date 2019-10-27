@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFxag-GquE4abIpJj0SsZeKsWqyFzy_As&callback=initMap">
+  </script>
+  <style>
+    /* Set the size of the div element that contains the map */
+    #map {
+      height: 400px;  /* The height is 400 pixels */
+      width: 100%;  /* The width is the width of the web page */
+    }
+  </style>
+</head>
+<body>
+<!--The div element for the map -->
+<div id="map"></div>
+
+
+<div class="col-8">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col"><%= t("billboard.index.address")%></th>
+      <th scope="col"><%= t("billboard.index.price")%></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @billboards.find_each do |billboard| %>
+      <tr>
+        <td><%= billboard.address  %></td>
+        <td><%= billboard.price  %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

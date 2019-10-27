@@ -1,0 +1,24 @@
+<body>
+<h2><%= t('billboard.edit.head') %></h2>
+<%= form_for :billboard, html: {miltipart: true}, url: billboard_path, method: :patch do |f| %>
+  <div class="col-7">
+    <p>
+      <%= t('billboard.edit.address') %>
+      <%= f.text_field(:address, {autofocus: true, :class => "form-control"}) %>
+    </p>
+    <p>
+      <%= t('billboard.edit.price') %>
+      <%= f.text_field(:price, {:class => "form-control"}) %>
+    </p>
+    <div class="custom-file">
+      <p>
+        <%= f.file_field(:photo, {:class => "custom-file-label", :placeholder => t("billboard.edit.photo")}) %>
+      </p>
+    </div>
+    <hr>
+    <p>
+      <%= f.submit t("billboard.edit.submit"), :class => "btn btn-success" %>
+    </p>
+  </div>
+<% end %>
+</body>

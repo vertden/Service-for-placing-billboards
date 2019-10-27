@@ -4,8 +4,8 @@ Rails.application.routes.draw do
     devise_for :users, controllers: {
         confirmations: 'confirmations'
     }
-    resources :billboards
     root 'billboards#index', as: 'home'
+    resources :billboards
     resource :profile
   end
 end

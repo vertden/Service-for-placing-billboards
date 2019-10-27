@@ -39,7 +39,7 @@ en:
     menu: "Menu"
     profile: "Profile"
     settings: "settings"
-
+    new_billboard: "New Billboard"
   profile:
     show:
       title: "My profile"
@@ -55,5 +55,22 @@ en:
       avatar: "Avatar"
       submit: "Update"
       language: "Language: "
+
+  billboard:
+    new:
+      head: "Add billboard"
+      address: "Address"
+      price: "Price"
+      photo: "Photo"
+      submit: "Save"
+    edit:
+      head: "Edit billboard"
+      address: "Address"
+      price: "Price"
+      photo: "Photo"
+      submit: "Update"
+    index:
+      address: "Address"
+      price: "Price"
 
   confirmation: "Are you sure?"
