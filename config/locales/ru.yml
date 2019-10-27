@@ -63,5 +63,14 @@ ru:
       price: "Цена"
       photo: "Фото"
       submit: "Сохранить"
+    edit:
+      head: "Изменить билборд"
+      address: "Адрес"
+      price: "Цена"
+      photo: "Фото"
+      submit: "Обновить"
+    index:
+      address: "Адрес"
+      price: "Цена"
 
   confirmation: "Вы уверены?"

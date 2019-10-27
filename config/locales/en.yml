@@ -63,5 +63,14 @@ en:
       price: "Price"
       photo: "Photo"
       submit: "Save"
+    edit:
+      head: "Edit billboard"
+      address: "Address"
+      price: "Price"
+      photo: "Photo"
+      submit: "Update"
+    index:
+      address: "Address"
+      price: "Price"
 
   confirmation: "Are you sure?"

@@ -1,0 +1,20 @@
+<body>
+<div class="col-8">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col"><%= t("billboard.index.address")%></th>
+      <th scope="col"><%= t("billboard.index.price")%></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @billboards.find_each do |billboard,index=0| %>
+      <tr>
+        <td><%= billboard.address  %></td>
+        <td><%= billboard.price  %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+</body>
