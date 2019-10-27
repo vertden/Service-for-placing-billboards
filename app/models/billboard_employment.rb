@@ -1,0 +1,2 @@
+class BillboardEmployment < ApplicationRecord
+end
