@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Billboard.create([
+    {address: "улица Немига 28", price: 200},
+    {address: "проспект Пушкина 34", price: 150},
+    {address: "улица Янки Купалы 23", price: 200},
+                 ])
