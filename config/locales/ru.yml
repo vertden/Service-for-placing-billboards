@@ -29,31 +29,31 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+ru:
 
   application:
-    head: "Billboards"
-    main: "Main page"
-    log_in: "log in"
-    sign_out: "sign out"
+    head: "Билборды"
+    main: "На главную"
+    log_in: "Войти"
+    sign_out: "Выйти"
     menu: "Menu"
-    profile: "Profile"
-    settings: "settings"
+    profile: "Профиль"
+    settings: "Настройки"
 
   profile:
     show:
-      title: "My profile"
-      edit: "Edit"
-      edit_password: "Edit password"
+      title: "Мой Профиль"
+      edit: "Редактировать"
+      edit_password: "Редактировать пароль"
     edit:
-      title: "Settings"
-      first_name: "First name"
-      second_name: "Second name"
-      nickname: "Nickname"
-      birthday: "Date of birth"
-      address: "Address"
-      avatar: "Avatar"
-      submit: "Update"
-      language: "Language: "
+      title: "Настройки"
+      first_name: "Имя"
+      second_name: "Фамилия"
+      nickname: "Никнейм"
+      birthday: "Дата рождения"
+      address: "Адрес"
+      avatar: "Аватар"
+      submit: "Обновить"
+      language: "Язык: "
 
-  confirmation: "Are you sure?"
+  confirmation: "Вы уверены?"

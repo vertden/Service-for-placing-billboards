@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Billboard</title>
+  <title><%= t("application.head") %></title>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,18 +24,27 @@
 <body>
 
 <nav class="navbar navbar-dark bg-dark">
-  <h5 class="navbar-brand "><%= link_to image_tag("/main.png", size: "35x35"), home_path, {:style => 'color:CC;', :class => "alert-link"} %>
-    <% if user_signed_in? %>
-      <div class="btn-group navbar-brand pr-5" role="group">
-        <%= link_to "sign out", destroy_user_session_path,
-                    {:style => 'color:#808080;', :class => "alert-link", :method => :delete} %>
+  <h5 class="navbar-brand ">
+    <%= link_to image_tag("/main.png", size: "35x35"), home_path, {:style => 'color:CC;', :class => "alert-link"} %>
+  </h5>
+  <% if user_signed_in? %>
+    <div class="btn-group navbar-brand pr-5" role="group">
+      <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" style=" margin-left: 50%;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= t("application.menu") %>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <link class="dropdown-item"><%= link_to t("application.profile"), profile_path,
+                                                {:style => 'color:#808080;', :class => "alert-link"} %>
+        <link class="dropdown-item"><%= link_to t("application.settings"), edit_profile_path,
+                                                {:style => 'color:#808080;', :class => "alert-link"} %>
+        <link class="dropdown-item"><%= link_to t("application.sign_out"), destroy_user_session_path,
+                                                {:style => 'color:#808080;', :class => "alert-link", :method => :delete} %>
       </div>
-    <% else %>
-      <h6><%= link_to "Sign in", new_user_session_path, {:style => 'color:	#C0C0C0;', :class => "alert-link"} %></h6>
-    <% end %>
+    </div>
+  <% else %>
+    <h6><%= link_to t("application.log_in"), new_user_session_path, {:style => 'color:	#C0C0C0;', :class => "alert-link"} %></h6>
+  <% end %>
 </nav>
-<h4 style="background: #3CB371">
-</h4>
 <br>
 <div class="container">
   <%= yield %>
@@ -43,7 +52,7 @@
 <footer class="my-5 pt-5 ">
   <hr>
   <div class="text-muted text-center text-small">
-    <p class="mb-1">&copy; 2019 Billboard</p>
+    <p class="mb-1">&copy; 2019 Billboards</p>
   </div>
 </footer>
 
