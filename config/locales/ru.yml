@@ -71,6 +71,7 @@ ru:
       submit: "Обновить"
     index:
       address: "Адрес"
-      price: "Цена"
+      price: "Цена за месяц"
+      billboard_link: "Подробнее"
 
   confirmation: "Вы уверены?"

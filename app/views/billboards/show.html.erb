@@ -1,0 +1,26 @@
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col"><%= t("billboard.index.address") %></th>
+          <th scope="col"><%= t("billboard.index.price") %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><%= @billboard.address %></td>
+          <td><%= @billboard.price %></td>
+        </tr>
+        </tbody>
+      </table>
+      <%= image_tag @billboard.photo.url if @billboard.photo? %>
+    </div>
+    <div class="col-5">
+
+    </div>
+  </div>
+</div>
+</body>

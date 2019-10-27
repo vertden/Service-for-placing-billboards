@@ -71,6 +71,7 @@ en:
       submit: "Update"
     index:
       address: "Address"
-      price: "Price"
+      price: "Price for month"
+      billboard_link: "More details"
 
   confirmation: "Are you sure?"
