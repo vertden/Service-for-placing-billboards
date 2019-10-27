@@ -4,7 +4,7 @@
   <div class="row" style="background-image: url(/profile_bg.gif); background-size: cover;">
     <div class="col-3" style="margin-top: 2%;">
       <% if @profile.avatar? %>
-        <p><%= image_tag @profile.avatar, :style => "border-radius: 50%;" %></p>
+        <p><%= image_tag @profile.avatar_url(:thumb), :style => "border-radius: 50%;" %></p>
       <% else %>
         <p><%= image_tag "/avatar.jpeg", :style => "border-radius: 50%;" %></p>
       <% end %>
