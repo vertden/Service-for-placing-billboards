@@ -74,4 +74,14 @@ ru:
       price: "Цена за месяц"
       billboard_link: "Подробнее"
 
+  employment:
+    new:
+      head: "Оставить заявку"
+      body: "Текст рекламы"
+      brand: "Бренд"
+      adv_type: "Тип рекламы"
+      start_date: "Срок начала аренды"
+      duration: "Длительность"
+      submit: "Send"
+
   confirmation: "Вы уверены?"

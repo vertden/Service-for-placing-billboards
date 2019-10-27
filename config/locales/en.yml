@@ -74,4 +74,14 @@ en:
       price: "Price for month"
       billboard_link: "More details"
 
+  employment:
+    new:
+      head: "Send request"
+      body: "Ads text"
+      brand: "Brand"
+      adv_type: "advertising type"
+      start_date: "Rental start date"
+      duration: "Duration"
+      submit: "Send"
+
   confirmation: "Are you sure?"
