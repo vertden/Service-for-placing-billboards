@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  brand: MyString
+  adv_type: MyString
+  duration: 1
+  start_date: 2019-10-27
+  billboard_id: 1
+
+two:
+  body: MyText
+  brand: MyString
+  adv_type: MyString
+  duration: 1
+  start_date: 2019-10-27
+  billboard_id: 1
