@@ -26,6 +26,8 @@
 <nav class="navbar navbar-dark bg-dark">
   <h5 class="navbar-brand ">
     <%= link_to image_tag("/main.png", size: "35x35"), home_path, {:style => 'color:CC;', :class => "alert-link"} %>
+    <%= link_to t("application.new_billboard"), new_billboard_path,
+                {:style => 'color:#C0C0C0;margin-left: 20%;', :class => "alert-link ", :remote => false} %></h5>
   </h5>
   <% if user_signed_in? %>
     <div class="btn-group navbar-brand pr-5" role="group">

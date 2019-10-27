@@ -39,7 +39,7 @@ ru:
     menu: "Menu"
     profile: "Профиль"
     settings: "Настройки"
-
+    new_billboard: "Новый билборд"
   profile:
     show:
       title: "Мой Профиль"
@@ -55,5 +55,13 @@ ru:
       avatar: "Аватар"
       submit: "Обновить"
       language: "Язык: "
+
+  billboard:
+    new:
+      head: "Добавить билборд"
+      address: "Адрес"
+      price: "Цена"
+      photo: "Фото"
+      submit: "Сохранить"
 
   confirmation: "Вы уверены?"
