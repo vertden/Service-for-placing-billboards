@@ -8,7 +8,7 @@
 Billboard.create([
                      {address: "улица Немига 28", price: 200},
                      {address: "проспект Пушкина 34", price: 150},
-                     {address: "улица Янки Купалы 23", price: 200},
+                     {address: "Полицейский мост", price: 200},
                      {address: "проспект Машерова 53", price: 180},
                      {address: "улица Максима Богдановича 46", price: 180}
                  ])
