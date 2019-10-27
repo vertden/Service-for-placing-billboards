@@ -36,6 +36,7 @@ en:
     main: "Main page"
     log_in: "log in"
     sign_out: "sign out"
+    menu: "Menu"
     profile: "Profile"
     settings: "settings"
 

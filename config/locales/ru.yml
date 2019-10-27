@@ -36,6 +36,7 @@ ru:
     main: "На главную"
     log_in: "Войти"
     sign_out: "Выйти"
+    menu: "Menu"
     profile: "Профиль"
     settings: "Настройки"
 
