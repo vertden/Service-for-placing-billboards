@@ -1,4 +1,7 @@
 class Billboard < ApplicationRecord
+  validates :address, presence: true, length: {minimum: 5}
+  validates :price, numericality: {greater_than_or_equal_to: 10}
+
   has_many :billboard_employments
   mount_uploader :photo, AvatarUploader
   geocoded_by :get_full_address
@@ -6,4 +9,5 @@ class Billboard < ApplicationRecord
   def get_full_address
     [address, " Минск"].compact.join(', ')
   end
+
 end
