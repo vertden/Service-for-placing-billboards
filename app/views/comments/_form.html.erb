@@ -1,0 +1,18 @@
+<%= form_with(model: comment,local: false,url: billboard_comments_path) do |form| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+        <% comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="col-10">
+      <%= form.text_field(:body, {:class => "form-control"}) %>
+  <div class="actions mt-3">
+    <%= form.submit t("comment.submit"), :class => "btn btn-success" %>
+  </div>
+  </div>
+<% end %>

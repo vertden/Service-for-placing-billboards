@@ -88,4 +88,7 @@ en:
       duration: "Duration"
       submit: "Send"
 
+  comment:
+    submit: "Add"
+
   confirmation: "Are you sure?"
