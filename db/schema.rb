@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_10_28_172235) do
 
+
   create_table "billboard_employments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "body"
     t.string "brand"
