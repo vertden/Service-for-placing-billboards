@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_071741) do
+ActiveRecord::Schema.define(version: 2019_10_28_092537) do
 
   create_table "billboard_employments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "body"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_071741) do
     t.integer "billboard_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "iser_id"
   end
 
   create_table "billboards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

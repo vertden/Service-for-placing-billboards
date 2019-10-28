@@ -3,7 +3,7 @@ class Billboard < ApplicationRecord
   validates :price, numericality: {greater_than_or_equal_to: 10}
 
   has_many :billboard_employments
-  has_many :comments
+  has_many :comments, dependent: :destroy
   mount_uploader :photo, AvatarUploader
   geocoded_by :get_full_address
   after_validation :geocode
