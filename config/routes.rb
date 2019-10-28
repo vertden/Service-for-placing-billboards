@@ -15,6 +15,8 @@ Rails.application.routes.draw do
         get 'users'
         patch 'appoint_admin'
         patch 'remove_admin'
+        patch 'confirm'
+        delete 'reject'
       end
     end
     scope '/admin' do

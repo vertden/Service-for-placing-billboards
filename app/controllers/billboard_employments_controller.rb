@@ -8,6 +8,7 @@ class BillboardEmploymentsController < ApplicationController
 
   def create
     @billboard = @billboard.billboard_employments.create(billboard_employment_params)
+    @billboard.user_id = current_user.id
     if @billboard.save
       redirect_to home_path
     end

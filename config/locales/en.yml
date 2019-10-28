@@ -56,6 +56,7 @@ en:
       address: "Address"
       price: "Price"
       created_at: "Created at"
+      confirm: "Confirm"
     requests:
       head: "Requests"
       body: "Body"
@@ -63,6 +64,8 @@ en:
       start_date: "Start date"
       duration: "Duration"
       created_at: "Created at"
+      adv_type: "Type of advertising"
+      active: "Request"
 
   profile:
     show:

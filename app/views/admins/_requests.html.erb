@@ -7,11 +7,13 @@
     <th scope="col"><%= t("admin.requests.start_date") %></th>
     <th scope="col"><%= t("admin.requests.duration") %></th>
     <th scope="col"><%= t("admin.requests.created_at") %></th>
+    <th scope="col"><%= t("admin.requests.adv_type") %></th>
+    <th scope="col"><%= t("admin.requests.active") %></th>
   </tr>
   </thead>
   <tbody>
-  <% @requests.find_each do |request| %>
-    <tr id="request">
+  <% @requests.order('active DESC').each do |request| %>
+    <tr id="request" class=<%= set_class(request.active) %>>
       <td>
         <%= request.body %>
       </td>
@@ -26,6 +28,19 @@
       </td>
       <td>
         <%= formatted_date(request.created_at) %>
+      </td>
+      <td>
+        <%= request.adv_type %>
+      </td>
+      <td>
+        <%= link_to t("admin.billboards.confirm"), confirm_admin_path(:request_id => request.id),
+                    method: :patch, style: 'color: green' %>
+      </td>
+      <td>
+        <%= link_to t("admin.billboards.reject"), reject_admin_path(:request_id => request.id),
+                    {:style => 'color: red', :method => :delete,
+                     data: {confirm: t("confirmation")}, class: "delete"} %>
+
       </td>
     </tr>
   <% end %>

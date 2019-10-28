@@ -56,6 +56,7 @@ ru:
       address: "Адрес"
       price: "Цена"
       created_at: "Добавлен"
+      confirm: "Подтвердить"
     requests:
       head: "Заявки"
       body: "Текст"
@@ -63,6 +64,8 @@ ru:
       start_date: "Срок начала аренды"
       duration: "Длительность"
       created_at: "Добавлена"
+      adv_type: "Тип рекламы"
+      active: "Заявка"
 
   profile:
     show:
