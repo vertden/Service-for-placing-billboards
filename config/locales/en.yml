@@ -71,6 +71,21 @@ en:
       submit: "Update"
     index:
       address: "Address"
-      price: "Price"
+      price: "Price for month"
+      billboard_link: "More details"
+    show:
+      address: "Address"
+      price: "Price for month"
+      request: "Leave a request"
+
+  employment:
+    new:
+      head: "Send request"
+      body: "Ads text"
+      brand: "Brand"
+      adv_type: "advertising type"
+      start_date: "Rental start date"
+      duration: "Duration"
+      submit: "Send"
 
   confirmation: "Are you sure?"

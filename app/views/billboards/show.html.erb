@@ -1,0 +1,29 @@
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col"><%= t("billboard.show.address") %></th>
+          <th scope="col"><%= t("billboard.show.price") %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><%= @billboard.address %></td>
+          <td><%= @billboard.price %></td>
+        </tr>
+        </tbody>
+      </table>
+      <%= image_tag @billboard.photo.url if @billboard.photo? %>
+    </div>
+    <div class="col-5">
+      <div id="new-employment">
+        <%= link_to t("billboard.show.request"),
+                    new_billboard_billboard_employment_path(@billboard), remote: true %>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

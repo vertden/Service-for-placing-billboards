@@ -5,7 +5,9 @@ Rails.application.routes.draw do
         confirmations: 'confirmations'
     }
     root 'billboards#index', as: 'home'
-    resources :billboards
+    resources :billboards do
+      resources :billboard_employments
+    end
     resource :profile
   end
 end

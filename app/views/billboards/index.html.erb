@@ -31,6 +31,7 @@
       <tr>
         <td><%= billboard.address  %></td>
         <td><%= billboard.price  %></td>
+        <td><%= link_to t("billboard.index.billboard_link"), billboard_path(billboard)%></td>
       </tr>
     <% end %>
     </tbody>
