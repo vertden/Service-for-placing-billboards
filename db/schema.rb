@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_092537) do
+ActiveRecord::Schema.define(version: 2019_10_28_103833) do
 
   create_table "billboard_employments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "body"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_092537) do
     t.string "avatar"
     t.date "birthday"
     t.string "address"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
