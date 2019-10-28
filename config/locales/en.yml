@@ -37,6 +37,7 @@ en:
     log_in: "log in"
     sign_out: "sign out"
     menu: "Menu"
+    admin_menu: "Control"
     profile: "Profile"
     settings: "settings"
     new_billboard: "New Billboard"

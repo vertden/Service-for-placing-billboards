@@ -37,6 +37,7 @@ ru:
     log_in: "Войти"
     sign_out: "Выйти"
     menu: "Menu"
+    admin_menu: "Управление"
     profile: "Профиль"
     settings: "Настройки"
     new_billboard: "Новый билборд"
