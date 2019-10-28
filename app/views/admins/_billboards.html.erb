@@ -1,0 +1,33 @@
+<h3><%= t("admin.billboards.head") %></h3>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col"><%= t("admin.billboards.address") %></th>
+    <th scope="col"><%= t("admin.billboards.price") %></th>
+    <th scope="col"><%= t("admin.billboards.created_at") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @billboards.find_each do |billboard| %>
+    <tr id="billboard">
+      <td>
+        <%= billboard.address %>
+      </td>
+      <td>
+        <%= billboard.price %>
+      </td>
+      <td>
+        <%= formatted_date(billboard.created_at) %>
+      </td>
+      <td>
+        <%= link_to t("admin.billboards.edit"), edit_billboard_path(:id => billboard.id), style: 'color: green' %>
+      </td>
+      <td>
+        <%= link_to t("admin.billboards.delete"), delete_admin_path(:billboard_id => billboard.id),
+                    {:style => 'color: red', :method => :delete,
+                     data: {confirm: t("confirmation")}, class: "delete"} %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

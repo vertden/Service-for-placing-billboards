@@ -4,4 +4,14 @@ class BillboardEmployment < ApplicationRecord
   validates :start_date, presence: true
   validates :duration, presence: true
   belongs_to :billboard
+
+  def self.confirm(id)
+    record = BillboardEmployment.find id
+    record.update(active: false)
+  end
+  def delete(id)
+    record = BillboardEmployment.find id
+    record.destroy
+  end
+
 end

@@ -37,9 +37,39 @@ ru:
     log_in: "Войти"
     sign_out: "Выйти"
     menu: "Menu"
+    admin_menu: "Управление"
     profile: "Профиль"
     settings: "Настройки"
     new_billboard: "Новый билборд"
+    employments: "Управление билбордами"
+    users: "Управление пользователями"
+
+  admin:
+    users:
+      full_name: "Полное имя"
+      email: "Электронная почта"
+      admin: "Админ"
+      appoint_admin: "Назначить"
+      remove_admin: "Удалить"
+    billboards:
+      head: "Все Билборды"
+      address: "Адрес"
+      price: "Цена"
+      created_at: "Добавлен"
+      edit: "Редактировать"
+      delete: "Удалить"
+    requests:
+      head: "Заявки"
+      body: "Текст"
+      brand: "Бренд"
+      start_date: "Срок начала аренды"
+      duration: "Длительность"
+      created_at: "Добавлена"
+      adv_type: "Тип рекламы"
+      active: "Заявка"
+      confirm: "Подтвердить"
+      reject: "Отклонить"
+
   profile:
     show:
       title: "Мой Профиль"

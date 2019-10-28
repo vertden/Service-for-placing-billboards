@@ -1,6 +1,5 @@
 class BillboardsController < ApplicationController
   before_action :set_billboard, only: [:show,:edit, :update]
-
   def show
   end
 
@@ -9,6 +8,9 @@ class BillboardsController < ApplicationController
   end
 
   def new
+    if not current_user.admin
+      redirect_to "home"
+    end
     @billboard = Billboard.new
   end
 

@@ -5,4 +5,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  def self.make_user_admin(id,admin)
+    user = User.find id
+    user.update(admin: admin)
+  end
+
 end

@@ -1,0 +1,47 @@
+<h3><%= t("admin.requests.head") %></h3>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col"><%= t("admin.requests.body") %></th>
+    <th scope="col"><%= t("admin.requests.brand") %></th>
+    <th scope="col"><%= t("admin.requests.start_date") %></th>
+    <th scope="col"><%= t("admin.requests.duration") %></th>
+    <th scope="col"><%= t("admin.requests.created_at") %></th>
+    <th scope="col"><%= t("admin.requests.adv_type") %></th>
+    <th scope="col"><%= t("admin.requests.active") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @requests.order('active DESC').each do |request| %>
+    <tr id="request" class=<%= set_class(request.active) %>>
+      <td>
+        <%= request.body %>
+      </td>
+      <td>
+        <%= request.brand %>
+      </td>
+      <td>
+        <%= request.start_date %>
+      </td>
+      <td>
+        <%= formatted_duration(request.duration) %>
+      </td>
+      <td>
+        <%= formatted_date(request.created_at) %>
+      </td>
+      <td>
+        <%= request.adv_type %>
+      </td>
+      <td>
+        <%= link_to t("admin.requests.confirm"), confirm_admin_path(:request_id => request.id),
+                    method: :patch, style: 'color: green' %>
+      </td>
+      <td>
+        <%= link_to t("admin.requests.reject"), reject_admin_path(:request_id => request.id),
+                    {:style => 'color: red', :method => :delete,
+                     data: {confirm: t("confirmation")}, class: "delete"} %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
