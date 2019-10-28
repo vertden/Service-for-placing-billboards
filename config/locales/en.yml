@@ -51,6 +51,18 @@ en:
       admin: "Admin"
       appoint_admin: "Appoint"
       remove_admin: "Remove"
+    billboards:
+      head: "All Billboards"
+      address: "Address"
+      price: "Price"
+      created_at: "Created at"
+    requests:
+      head: "Requests"
+      body: "Body"
+      brand: "Brand"
+      start_date: "Start date"
+      duration: "Duration"
+      created_at: "Created at"
 
   profile:
     show:

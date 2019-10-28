@@ -1,7 +1,8 @@
 class AdminsController < ApplicationController
 
   def billboards
-
+    @billboards = Billboard.all
+    @requests = BillboardEmployment.all
   end
 
   def users

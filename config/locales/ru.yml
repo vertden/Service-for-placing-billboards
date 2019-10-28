@@ -51,6 +51,18 @@ ru:
       admin: "Админ"
       appoint_admin: "Назначить"
       remove_admin: "Удалить"
+    billboards:
+      head: "Все Билборды"
+      address: "Адрес"
+      price: "Цена"
+      created_at: "Добавлен"
+    requests:
+      head: "Заявки"
+      body: "Текст"
+      brand: "Бренд"
+      start_date: "Срок начала аренды"
+      duration: "Длительность"
+      created_at: "Добавлена"
 
   profile:
     show:

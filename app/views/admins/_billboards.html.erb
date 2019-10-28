@@ -1,0 +1,25 @@
+<h3><%= t("admin.billboards.head") %></h3>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col"><%= t("admin.billboards.address") %></th>
+    <th scope="col"><%= t("admin.billboards.price") %></th>
+    <th scope="col"><%= t("admin.billboards.created_at") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @billboards.find_each do |billboard| %>
+    <tr id="billboard">
+      <td>
+        <%= billboard.address %>
+      </td>
+      <td>
+        <%= billboard.price %>
+      </td>
+      <td>
+        <%= formatted_date(billboard.created_at) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

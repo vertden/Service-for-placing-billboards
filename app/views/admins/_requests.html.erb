@@ -1,0 +1,33 @@
+<h3><%= t("admin.requests.head") %></h3>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col"><%= t("admin.requests.body") %></th>
+    <th scope="col"><%= t("admin.requests.brand") %></th>
+    <th scope="col"><%= t("admin.requests.start_date") %></th>
+    <th scope="col"><%= t("admin.requests.duration") %></th>
+    <th scope="col"><%= t("admin.requests.created_at") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @requests.find_each do |request| %>
+    <tr id="request">
+      <td>
+        <%= request.body %>
+      </td>
+      <td>
+        <%= request.brand %>
+      </td>
+      <td>
+        <%= request.start_date %>
+      </td>
+      <td>
+        <%= formatted_duration(request.duration) %>
+      </td>
+      <td>
+        <%= formatted_date(request.created_at) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
