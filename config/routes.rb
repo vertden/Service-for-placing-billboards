@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     root 'billboards#index', as: 'home'
     resources :billboards do
       resources :billboard_employments
+      resources :comments
     end
     resource :profile
   end

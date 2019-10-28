@@ -86,6 +86,9 @@ ru:
       adv_type: "Тип рекламы"
       start_date: "Срок начала аренды"
       duration: "Длительность"
-      submit: "Send"
+      submit: "Отправить"
+
+  comment:
+    submit: "Добавить"
 
   confirmation: "Вы уверены?"
