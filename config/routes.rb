@@ -9,13 +9,16 @@ Rails.application.routes.draw do
       resources :billboard_employments
       resources :comments
     end
+    resource :admin, only: [] do
+      member do
+        get 'billboards'
+        get 'users'
+        patch 'appoint_admin'
+        patch 'remove_admin'
+      end
+    end
     scope '/admin' do
       resources :billboards, except: [:show, :index]
-      resource :admin do
-        member do
-          get 'preview'
-        end
-      end
     end
     resource :profile
   end

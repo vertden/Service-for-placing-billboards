@@ -41,6 +41,17 @@ en:
     profile: "Profile"
     settings: "settings"
     new_billboard: "New Billboard"
+    employments: "Billboard management"
+    users: "Users management"
+
+  admin:
+    users:
+      full_name: "Full name"
+      email: "Email"
+      admin: "Admin"
+      appoint_admin: "Appoint"
+      remove_admin: "Remove"
+
   profile:
     show:
       title: "My profile"
