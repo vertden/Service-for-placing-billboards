@@ -3,7 +3,7 @@ class BillboardEmploymentsController < ApplicationController
 
   def new
     @billboard_employment = BillboardEmployment.new
-
+    @adv_types = %w(commercial social)
   end
 
   def create

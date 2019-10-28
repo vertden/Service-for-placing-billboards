@@ -22,7 +22,7 @@
     </p>
     <p>
       <%= t("employment.new.adv_type") %>
-      <%= form.text_area(:adv_type, {:class => "form-control"}) %>
+      <%= form.select(:adv_type,@adv_types, {}, {:class => "form-control"}) %>
     </p>
     <p>
       <%= t("employment.new.start_date") %>
