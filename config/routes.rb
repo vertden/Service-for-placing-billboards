@@ -5,9 +5,12 @@ Rails.application.routes.draw do
         confirmations: 'confirmations'
     }
     root 'billboards#index', as: 'home'
-    resources :billboards do
+    resources :billboards,only: [:show] do
       resources :billboard_employments
       resources :comments
+    end
+    scope '/admin' do
+      resources :billboards, except: [:show,:index]
     end
     resource :profile
   end
