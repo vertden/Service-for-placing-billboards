@@ -73,6 +73,10 @@ ru:
       address: "Адрес"
       price: "Цена за месяц"
       billboard_link: "Подробнее"
+    show:
+      address: "Адрес"
+      price: "Цена за месяц"
+      request: "Оставить заявку"
 
   employment:
     new:

@@ -73,6 +73,10 @@ en:
       address: "Address"
       price: "Price for month"
       billboard_link: "More details"
+    show:
+      address: "Address"
+      price: "Price for month"
+      request: "Leave a request"
 
   employment:
     new:
