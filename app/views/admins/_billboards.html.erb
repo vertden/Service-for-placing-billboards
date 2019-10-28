@@ -19,6 +19,9 @@
       <td>
         <%= formatted_date(billboard.created_at) %>
       </td>
+      <td>
+        <%= link_to t("admin.billboards.edit"), edit_billboard_path(:id => billboard.id), style: 'color: green' %>
+      </td>
     </tr>
   <% end %>
   </tbody>
