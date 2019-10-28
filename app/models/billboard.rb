@@ -10,5 +10,8 @@ class Billboard < ApplicationRecord
   def get_full_address
     [address, " Минск"].compact.join(', ')
   end
-
+  def delete(id)
+    record = Billboard.find id
+    record.destroy
+  end
 end

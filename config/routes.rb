@@ -5,7 +5,7 @@ Rails.application.routes.draw do
         confirmations: 'confirmations'
     }
     root 'billboards#index', as: 'home'
-    resources :billboards, only: [:show] do
+    resources :billboards do
       resources :billboard_employments
       resources :comments
     end
@@ -17,10 +17,8 @@ Rails.application.routes.draw do
         patch 'remove_admin'
         patch 'confirm'
         delete 'reject'
+        delete 'delete'
       end
-    end
-    scope '/admin' do
-      resources :billboards, except: [:show, :index]
     end
     resource :profile
   end

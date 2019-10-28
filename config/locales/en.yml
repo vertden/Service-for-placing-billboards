@@ -57,6 +57,7 @@ en:
       price: "Price"
       created_at: "Created at"
       edit: "Edit"
+      delete: "Delete"
     requests:
       head: "Requests"
       body: "Body"

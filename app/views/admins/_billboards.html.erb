@@ -22,6 +22,11 @@
       <td>
         <%= link_to t("admin.billboards.edit"), edit_billboard_path(:id => billboard.id), style: 'color: green' %>
       </td>
+      <td>
+        <%= link_to t("admin.billboards.delete"), delete_admin_path(:billboard_id => billboard.id),
+                    {:style => 'color: red', :method => :delete,
+                     data: {confirm: t("confirmation")}, class: "delete"} %>
+      </td>
     </tr>
   <% end %>
   </tbody>

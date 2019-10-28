@@ -40,7 +40,6 @@
         <%= link_to t("admin.requests.reject"), reject_admin_path(:request_id => request.id),
                     {:style => 'color: red', :method => :delete,
                      data: {confirm: t("confirmation")}, class: "delete"} %>
-
       </td>
     </tr>
   <% end %>

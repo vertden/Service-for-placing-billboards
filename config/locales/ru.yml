@@ -57,6 +57,7 @@ ru:
       price: "Цена"
       created_at: "Добавлен"
       edit: "Редактировать"
+      delete: "Удалить"
     requests:
       head: "Заявки"
       body: "Текст"
