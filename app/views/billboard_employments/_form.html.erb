@@ -1,15 +1,4 @@
 <%= form_with(model: billboard_employment, local: false, url: billboard_billboard_employments_path) do |form| %>
-  <% if billboard_employment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(billboard_employment.errors.count, "error") %> prohibited this billboard_employment from being saved:</h2>
-
-      <ul>
-        <% billboard_employment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div class="col-8">
     <h2><%= t("employment.new.head") %></h2>
     <p>

@@ -11,6 +11,8 @@ class BillboardEmploymentsController < ApplicationController
     @billboard.user_id = current_user.id
     if @billboard.save
       redirect_to home_path
+    else
+      render 'new'
     end
   end
 
