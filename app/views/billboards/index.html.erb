@@ -19,23 +19,8 @@
 
 
 <div class="col-8">
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th scope="col"><%= t("billboard.index.address")%></th>
-      <th scope="col"><%= t("billboard.index.price")%></th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @billboards.find_each do |billboard| %>
-      <tr>
-        <td><%= billboard.address  %></td>
-        <td><%= Price.get_price(billboard.price_id)  %></td>
-        <td><%= link_to t("billboard.index.billboard_link"), billboard_path(billboard)%></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <%= render 'billboards' %>
+  <%= render 'free_billboards' %>
 </div>
 </body>
 </html>

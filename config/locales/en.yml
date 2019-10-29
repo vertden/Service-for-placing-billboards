@@ -106,6 +106,7 @@ en:
       address: "Address"
       price: "Price for month"
       billboard_link: "More details"
+      free: "Free billboards"
     show:
       address: "Address"
       price: "Price for month"

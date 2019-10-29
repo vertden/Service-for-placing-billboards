@@ -51,4 +51,18 @@ class Billboard < ApplicationRecord
     days_of_inactivity.to_hash[0]["days_of_inactivity"]
   end
 
+  def self.get_free_billboards
+    not_active = Billboard.connection.select_all(<<-SQL.squish)
+      SELECT b.id,b.address FROM billboards as b
+      INNER JOIN billboard_employments as b_e
+	      on b.id = b_e.billboard_id
+      WHERE CURDATE() NOT BETWEEN b_e.start_date and DATE_ADD(b_e.start_date,INTERVAL duration MONTH)
+      GROUP BY b.id,b.address;
+    SQL
+    not_active.to_hash
+
+  end
+
+
+
 end

@@ -106,6 +106,7 @@ ru:
       address: "Адрес"
       price: "Цена за месяц"
       billboard_link: "Подробнее"
+      free: "Свободные билборды"
     show:
       address: "Адрес"
       price: "Цена за месяц"
