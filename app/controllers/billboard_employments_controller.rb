@@ -14,6 +14,12 @@ class BillboardEmploymentsController < ApplicationController
     end
   end
 
+  def destroy
+    @billboard_employment = BillboardEmployment.find(params[:id])
+    @billboard_employment.destroy
+    redirect_to billboards_admin_path
+  end
+
   def set_billboard
     @billboard = Billboard.find(params[:billboard_id])
   end

@@ -37,7 +37,7 @@
                     method: :patch, style: 'color: green' %>
       </td>
       <td>
-        <%= link_to t("admin.requests.reject"), reject_admin_path(:request_id => request.id),
+        <%= link_to t("admin.requests.reject"), billboard_billboard_employment_path(:id => request.id,:billboard_id => request.billboard_id),
                     {:style => 'color: red', :method => :delete,
                      data: {confirm: t("confirmation")}, class: "delete"} %>
       </td>

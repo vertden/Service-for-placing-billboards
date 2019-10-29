@@ -16,8 +16,6 @@ Rails.application.routes.draw do
         patch 'appoint_admin'
         patch 'remove_admin'
         patch 'confirm'
-        delete 'reject'
-        delete 'delete'
       end
     end
     resource :profile

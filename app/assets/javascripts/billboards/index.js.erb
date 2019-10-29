@@ -11,5 +11,5 @@ function initMap() {
 }
 var locations = new Array();
 <% Billboard.all.find_each do |billboard| %>
-  locations.push({lat: <%= billboard.latitude %>, lng: <%= billboard.longitude %>})
+locations.push({lat: <%= billboard.latitude %>, lng: <%= billboard.longitude %>})
 <% end %>

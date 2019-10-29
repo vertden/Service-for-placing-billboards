@@ -30,7 +30,7 @@
     </p>
     <p>
       <%= t("employment.new.duration") %>
-      <%= form.text_field(:duration, {:class => "form-control"}) %>
+      <%= form.number_field(:duration, {:class => "form-control"}) %>
     </p>
     <div class="actions">
       <%= form.submit t("employment.new.submit"), :class => "btn btn-success" %>

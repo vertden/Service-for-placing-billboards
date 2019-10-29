@@ -7,8 +7,10 @@
       <%= f.text_field(:address, {autofocus: true, :class => "form-control"}) %>
     </p>
     <p>
-      <%= t('billboard.edit.price') %>
-      <%= f.text_field(:price, {:class => "form-control"}) %>
+      <%= t('billboard.new.price') %>
+      <%= fields_for :price do |price_form| %>
+        <%= price_form.number_field :price, {:class => "form-control"}%>
+      <% end %>
     </p>
     <div class="custom-file">
       <p>
