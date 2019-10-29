@@ -56,6 +56,7 @@ ru:
       address: "Адрес"
       price: "Цена"
       created_at: "Добавлен"
+      updated_at: "Дата изменения"
       edit: "Редактировать"
       delete: "Удалить"
     requests:

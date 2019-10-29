@@ -19,7 +19,7 @@
           <thead>
           <tr>
             <th scope="col"><%= t("admin.billboards.price") %></th>
-            <th scope="col"><%= t("admin.billboards.created_at") %></th>
+            <th scope="col"><%= t("admin.billboards.updated_at") %></th>
           </tr>
           </thead>
           <tbody>
@@ -35,10 +35,6 @@
           <% end %>
           </tbody>
         </table>
-        <%# Price.get_all_prices(billboard.id).each do |x| %>
-        <!--          <tr><%#= x["price"] %></tr>-->
-        <%# end %>
-
       </td>
       <td>
         <%= formatted_date(billboard.created_at) %>

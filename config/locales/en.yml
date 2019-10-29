@@ -56,6 +56,7 @@ en:
       address: "Address"
       price: "Price"
       created_at: "Created at"
+      updated_at: "Updated at"
       edit: "Edit"
       delete: "Delete"
     requests:
