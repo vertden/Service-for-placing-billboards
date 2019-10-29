@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
-
+  before_action :authenticate_user!
+  before_action :verify_user
   def billboards
     @billboards = Billboard.all
     @requests = BillboardEmployment.all
@@ -23,5 +24,12 @@ class AdminsController < ApplicationController
     BillboardEmployment.confirm(params["request_id"])
     redirect_to billboards_admin_path # Need JS
   end
+
+  def verify_user
+    if not current_user.admin
+      redirect_to "home"
+    end
+  end
+
 end
 

@@ -1,6 +1,7 @@
 class BillboardsController < ApplicationController
   before_action :set_billboard, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:new,:edit]
+  before_action :verify_user, only: [:new,:edit]
   def show
   end
 
@@ -9,9 +10,6 @@ class BillboardsController < ApplicationController
   end
 
   def new
-    if not current_user.admin
-      redirect_to "home"
-    end
     @billboard = Billboard.new
     @billboard.prices.new
   end
@@ -58,5 +56,11 @@ class BillboardsController < ApplicationController
 
   def price_params
     params.require(:price).permit(:price)
+  end
+
+  def verify_user
+    if not current_user.admin
+      redirect_to "home"
+    end
   end
 end
