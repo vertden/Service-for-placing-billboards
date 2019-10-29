@@ -4,6 +4,8 @@
   <tr>
     <th scope="col"><%= t("admin.billboards.address") %></th>
     <th scope="col"><%= t("admin.billboards.price") %></th>
+    <th scope="col"><%= t("admin.billboards.use") %></th>
+    <th scope="col"><%= t("admin.billboards.inactivity") %></th>
     <th scope="col"><%= t("admin.billboards.created_at") %></th>
   </tr>
   </thead>
@@ -14,7 +16,32 @@
         <%= billboard.address %>
       </td>
       <td>
-        <%= billboard.price %>
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col"><%= t("admin.billboards.price") %></th>
+            <th scope="col"><%= t("admin.billboards.updated_at") %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% Price.get_all_prices(billboard.id).each do |data| %>
+            <tr >
+              <td>
+                <%= data["price"] %>
+              </td>
+              <td>
+                <%= data["created_at"] %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </td>
+      <td>
+        <%= Billboard.get_days_of_use(billboard.id) %>
+      </td>
+      <td>
+        <%= Billboard.get_days_of_inactivity(billboard.id) %>
       </td>
       <td>
         <%= formatted_date(billboard.created_at) %>
@@ -23,7 +50,7 @@
         <%= link_to t("admin.billboards.edit"), edit_billboard_path(:id => billboard.id), style: 'color: green' %>
       </td>
       <td>
-        <%= link_to t("admin.billboards.delete"), delete_admin_path(:billboard_id => billboard.id),
+        <%= link_to t("admin.billboards.delete"), billboard_path(:id => billboard.id),
                     {:style => 'color: red', :method => :delete,
                      data: {confirm: t("confirmation")}, class: "delete"} %>
       </td>

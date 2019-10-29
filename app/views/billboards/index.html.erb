@@ -30,7 +30,7 @@
     <% @billboards.find_each do |billboard| %>
       <tr>
         <td><%= billboard.address  %></td>
-        <td><%= billboard.price  %></td>
+        <td><%= Price.get_price(billboard.price_id)  %></td>
         <td><%= link_to t("billboard.index.billboard_link"), billboard_path(billboard)%></td>
       </tr>
     <% end %>

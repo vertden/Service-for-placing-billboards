@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
-
+  before_action :authenticate_user!
+  before_action :verify_user
   def billboards
     @billboards = Billboard.all
     @requests = BillboardEmployment.all
@@ -10,12 +11,12 @@ class AdminsController < ApplicationController
   end
 
   def appoint_admin
-    User.make_user_admin(params["user_id"],true)
+    User.make_user_admin(params["user_id"], true)
     redirect_to users_admin_path # Need JS
   end
 
   def remove_admin
-    User.make_user_admin(params["user_id"],false)
+    User.make_user_admin(params["user_id"], false)
     redirect_to users_admin_path # Need JS
   end
 
@@ -24,14 +25,10 @@ class AdminsController < ApplicationController
     redirect_to billboards_admin_path # Need JS
   end
 
-  def reject
-    BillboardEmployment.delete(params["request_id"])
-    redirect_to billboards_admin_path # Need JS
-  end
-
-  def delete
-    Billboard.delete(params["billboard_id"])
-    redirect_to billboards_admin_path # Need JS
+  def verify_user
+    if not current_user.admin
+      redirect_to "home"
+    end
   end
 
 end

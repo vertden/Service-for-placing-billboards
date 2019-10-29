@@ -13,7 +13,9 @@
       </p>
       <p>
         <%= t('billboard.new.price') %>
-        <%= f.text_field(:price, {:class => "form-control"}) %>
+        <%= fields_for :price do |price_form| %>
+          <%= price_form.number_field :price, {:class => "form-control"}%>
+        <% end %>
       </p>
       <hr>
       <div class="custom-file">

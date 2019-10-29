@@ -55,7 +55,10 @@ ru:
       head: "Все Билборды"
       address: "Адрес"
       price: "Цена"
+      use: "Дней использования"
+      inactivity: "Дней простоя"
       created_at: "Добавлен"
+      updated_at: "Дата изменения"
       edit: "Редактировать"
       delete: "Удалить"
     requests:

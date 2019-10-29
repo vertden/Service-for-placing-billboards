@@ -12,7 +12,7 @@
         <tbody>
         <tr>
           <td><%= @billboard.address %></td>
-          <td><%= @billboard.price %></td>
+          <td><%=  Price.get_price(@billboard.price_id) %></td>
         </tr>
         </tbody>
       </table>
