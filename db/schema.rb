@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_29_072839) do
+ActiveRecord::Schema.define(version: 2019_10_29_073621) do
 
   create_table "billboard_employments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "body"
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2019_10_29_072839) do
   create_table "billboards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "photo"
     t.string "address"
-    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"
