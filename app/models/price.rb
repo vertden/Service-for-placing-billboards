@@ -23,9 +23,3 @@ class Price < ApplicationRecord
 
 end
 
-# price = Price.connection.select_all(<<-SQL.squish)
-#     SELECT p.price,p.created_at FROM prices as p
-#     LEFT JOIN billboards as b
-#     on b.price_id = p.id
-#     WHERE p.billboard_id = #{billboard_id};
-#     SQL

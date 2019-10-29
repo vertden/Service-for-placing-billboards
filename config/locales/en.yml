@@ -55,6 +55,8 @@ en:
       head: "All Billboards"
       address: "Address"
       price: "Price"
+      use: "Days of use"
+      inactivity: "Days of inactivity"
       created_at: "Created at"
       updated_at: "Updated at"
       edit: "Edit"

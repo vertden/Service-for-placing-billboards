@@ -4,6 +4,8 @@
   <tr>
     <th scope="col"><%= t("admin.billboards.address") %></th>
     <th scope="col"><%= t("admin.billboards.price") %></th>
+    <th scope="col"><%= t("admin.billboards.use") %></th>
+    <th scope="col"><%= t("admin.billboards.inactivity") %></th>
     <th scope="col"><%= t("admin.billboards.created_at") %></th>
   </tr>
   </thead>
@@ -14,7 +16,6 @@
         <%= billboard.address %>
       </td>
       <td>
-
         <table class="table">
           <thead>
           <tr>
@@ -35,6 +36,12 @@
           <% end %>
           </tbody>
         </table>
+      </td>
+      <td>
+        <%= Billboard.get_days_of_use(billboard.id) %>
+      </td>
+      <td>
+        <%= Billboard.get_days_of_inactivity(billboard.id) %>
       </td>
       <td>
         <%= formatted_date(billboard.created_at) %>
