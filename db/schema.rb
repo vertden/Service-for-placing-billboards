@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_10_29_073621) do
   create_table "prices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "billboard_id"
     t.integer "price"
+    t.datetime "created_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

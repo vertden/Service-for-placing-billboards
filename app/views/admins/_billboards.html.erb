@@ -14,7 +14,31 @@
         <%= billboard.address %>
       </td>
       <td>
-        <%= Price.get_price(billboard.price_id) %>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col"><%= t("admin.billboards.price") %></th>
+            <th scope="col"><%= t("admin.billboards.created_at") %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% Price.get_all_prices(billboard.id).each do |data| %>
+            <tr >
+              <td>
+                <%= data["price"] %>
+              </td>
+              <td>
+                <%= data["created_at"] %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <%# Price.get_all_prices(billboard.id).each do |x| %>
+        <!--          <tr><%#= x["price"] %></tr>-->
+        <%# end %>
+
       </td>
       <td>
         <%= formatted_date(billboard.created_at) %>

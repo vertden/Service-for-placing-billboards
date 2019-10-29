@@ -33,13 +33,16 @@
         <%= request.adv_type %>
       </td>
       <td>
+        <% if request.active %>
         <%= link_to t("admin.requests.confirm"), confirm_admin_path(:request_id => request.id),
                     method: :patch, style: 'color: green' %>
+
       </td>
       <td>
         <%= link_to t("admin.requests.reject"), billboard_billboard_employment_path(:id => request.id,:billboard_id => request.billboard_id),
                     {:style => 'color: red', :method => :delete,
                      data: {confirm: t("confirmation")}, class: "delete"} %>
+        <% end %>
       </td>
     </tr>
   <% end %>
