@@ -62,6 +62,10 @@
     <h6><%= link_to t("application.log_in"), new_user_session_path, {:style => 'color:	#C0C0C0;', :class => "alert-link"} %></h6>
   <% end %>
 </nav>
+<h4 style="background: #3CB371">
+  <%= notice %>
+  <%= alert %>
+</h4>
 <br>
 <div class="container">
   <%= yield %>

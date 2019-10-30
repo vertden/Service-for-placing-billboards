@@ -51,4 +51,42 @@ class Billboard < ApplicationRecord
     days_of_inactivity.to_hash[0]["days_of_inactivity"]
   end
 
+  def self.get_free_billboards
+    not_active = Billboard.connection.select_all(<<-SQL.squish)
+      SELECT b.id,b.address FROM billboards as b
+      INNER JOIN billboard_employments as b_e
+	      on b.id = b_e.billboard_id
+      WHERE CURDATE() NOT BETWEEN b_e.start_date and DATE_ADD(b_e.start_date,INTERVAL duration MONTH)
+      GROUP BY b.id,b.address;
+    SQL
+    not_active.to_hash
+
+  end
+
+  def self.update_params
+    Billboard.connection.select_all(<<-SQL.squish)
+      UPDATE billboards as b 
+      JOIN billboard_employments as be
+        on be.billboard_id = b.id
+      SET b.adv_type = IF(CURDATE() BETWEEN be.start_date AND DATE_ADD(be.start_date,INTERVAL be.duration MONTH),
+        be.adv_type,null),
+      b.brand = IF(CURDATE() BETWEEN be.start_date AND DATE_ADD(be.start_date,INTERVAL be.duration MONTH),
+        be.brand,null);
+    SQL
+  end
+
+  def self.get_release_date(billboard_id)
+    release_date = Billboard.connection.select_all(<<-SQL.squish)
+    SELECT distinct b.id, IF(DATEDIFF(start_date, CURDATE())>=0, DATEDIFF(start_date, CURDATE()),
+      IF(DATEDIFF(DATE_ADD(start_date,INTERVAL duration MONTH),CURDATE())>=0,
+        DATEDIFF(DATE_ADD(start_date,INTERVAL duration MONTH),CURDATE()), 0)) as date
+    FROM billboard_employments as be
+    RIGHT JOIN billboards as b
+		  on b.id =be.billboard_id
+    WHERE b.id = #{billboard_id}
+    SQL
+    Date.today + release_date.to_hash[0]['date']
+  end
+
 end
+

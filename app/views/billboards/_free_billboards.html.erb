@@ -1,0 +1,18 @@
+
+<h3><%= t("billboard.index.free") %></h3>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col"><%= t("billboard.index.address")%></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% Billboard.get_free_billboards.each do |billboard| %>
+    <tr class="table-light">
+      <td><%= billboard["address"]  %></td>
+<!--      <td><%#= billboard[""]  %></td>-->
+      <td><%= link_to t("billboard.index.billboard_link"), billboard_path(billboard["id"])%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

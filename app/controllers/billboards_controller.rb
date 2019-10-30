@@ -2,11 +2,12 @@ class BillboardsController < ApplicationController
   before_action :set_billboard, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new,:edit]
   before_action :verify_user, only: [:new,:edit]
+  before_action :update_billboard,only: [:index]
   def show
   end
 
   def index
-    @billboards = Billboard.all
+    @billboards = Billboard.all.paginate(:per_page =>5,:page => params[:page])
   end
 
   def new
@@ -62,5 +63,9 @@ class BillboardsController < ApplicationController
     if not current_user.admin
       redirect_to "home"
     end
+  end
+
+  def update_billboard
+    Billboard.update_params
   end
 end

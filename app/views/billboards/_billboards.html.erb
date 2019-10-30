@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col"><%= t("billboard.index.address")%></th>
+    <th scope="col"><%= t("billboard.index.price")%></th>
+    <th scope="col"><%= t("billboard.index.ad_type")%></th>
+    <th scope="col"><%= t("billboard.index.brand")%></th>
+    <th scope="col"><%= t("billboard.index.release_date")%></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @billboards.each do |billboard| %>
+    <tr class="table-light">
+      <td><%= billboard.address  %></td>
+      <td><%= Price.get_price(billboard.price_id)  %></td>
+      <td><%= check_for_null(billboard.adv_type)  %></td>
+      <td><%= check_for_null(billboard.brand)  %></td>
+      <td><%= get_date(billboard.id) %></td>
+      <td><%= link_to t("billboard.index.billboard_link"), billboard_path(billboard)%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= will_paginate  @billboards %>
