@@ -110,6 +110,7 @@ ru:
       ad_type: "Тип рекламы"
       brand: "Бренд"
       none: "Нет"
+      vacant: "Свободен"
     show:
       address: "Адрес"
       price: "Цена за месяц"

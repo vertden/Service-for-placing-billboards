@@ -75,5 +75,18 @@ class Billboard < ApplicationRecord
     SQL
   end
 
+  def self.get_release_date(billboard_id)
+    release_date = Billboard.connection.select_all(<<-SQL.squish)
+    SELECT distinct b.id, IF(DATEDIFF(start_date, CURDATE())>=0, DATEDIFF(start_date, CURDATE()),
+      IF(DATEDIFF(DATE_ADD(start_date,INTERVAL duration MONTH),CURDATE())>=0,
+        DATEDIFF(DATE_ADD(start_date,INTERVAL duration MONTH),CURDATE()), 0)) as date
+    FROM billboard_employments as be
+    RIGHT JOIN billboards as b
+		  on b.id =be.billboard_id
+    WHERE b.id = #{billboard_id}
+    SQL
+    Date.today + release_date.to_hash[0]['date']
+  end
+
 end
 

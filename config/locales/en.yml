@@ -110,6 +110,7 @@ en:
       ad_type: "Ad type"
       brand: "Brand"
       none: "None"
+      vacant: "Free"
     show:
       address: "Address"
       price: "Price for month"
