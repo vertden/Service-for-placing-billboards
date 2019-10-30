@@ -107,6 +107,9 @@ en:
       price: "Price for month"
       billboard_link: "More details"
       free: "Free billboards"
+      ad_type: "Ad type"
+      brand: "Brand"
+      none: "None"
     show:
       address: "Address"
       price: "Price for month"

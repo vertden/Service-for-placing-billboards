@@ -107,6 +107,9 @@ ru:
       price: "Цена за месяц"
       billboard_link: "Подробнее"
       free: "Свободные билборды"
+      ad_type: "Тип рекламы"
+      brand: "Бренд"
+      none: "Нет"
     show:
       address: "Адрес"
       price: "Цена за месяц"

@@ -63,6 +63,20 @@ class Billboard < ApplicationRecord
 
   end
 
+  def self.update_params
+    Billboard.connection.select_all(<<-SQL.squish)
+      UPDATE billboards as b 
+      JOIN billboard_employments as be
+        on be.billboard_id = b.id
+      SET b.adv_type = IF(CURDATE() BETWEEN be.start_date AND DATE_ADD(be.start_date,INTERVAL be.duration MONTH),
+        be.adv_type,null),
+      b.brand = IF(CURDATE() BETWEEN be.start_date AND DATE_ADD(be.start_date,INTERVAL be.duration MONTH),
+        be.brand,null);
+    SQL
+
+
+  end
 
 
 end
+
