@@ -51,6 +51,9 @@ en:
       admin: "Admin"
       appoint_admin: "Appoint"
       remove_admin: "Remove"
+      count: "Billboards in use"
+      pay: "Pays per month"
+      created_at: "Registration date"
     billboards:
       head: "All Billboards"
       address: "Address"
@@ -129,4 +132,7 @@ en:
   comment:
     submit: "Add"
 
+  mailer:
+    confirm: "Your request is approved"
+    reject: "Your request was rejected"
   confirmation: "Are you sure?"
