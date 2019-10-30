@@ -51,6 +51,9 @@ en:
       admin: "Admin"
       appoint_admin: "Appoint"
       remove_admin: "Remove"
+      count: "Billboards in use"
+      pay: "Pays per month"
+      created_at: "Registration date"
     billboards:
       head: "All Billboards"
       address: "Address"

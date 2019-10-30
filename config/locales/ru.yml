@@ -51,6 +51,9 @@ ru:
       admin: "Админ"
       appoint_admin: "Назначить"
       remove_admin: "Удалить"
+      count: "Билбордов занято"
+      pay: "Платит в месяц"
+      created_at: "Дата регистрации"
     billboards:
       head: "Все Билборды"
       address: "Адрес"

@@ -4,6 +4,9 @@
   <tr>
     <th scope="col"><%= t("admin.users.full_name") %></th>
     <th scope="col"><%= t("admin.users.email") %></th>
+    <th scope="col"><%= t("admin.users.count") %></th>
+    <th scope="col"><%= t("admin.users.pay") %></th>
+    <th scope="col"><%= t("admin.users.created_at") %></th>
     <th scope="col"><%= t("admin.users.admin") %></th>
   </tr>
   </thead>
@@ -16,6 +19,15 @@
       </td>
       <td>
         <%= user.email %>
+      </td>
+      <td>
+        <%= User.get_billboards_count(user.id) %>
+      </td>
+      <td>
+        <%= User.get_pay_per_month(user.id) %>
+      </td>
+      <td>
+        <%= formatted_date(user.created_at) %>
       </td>
       <td>
         <%= user.admin %>
