@@ -7,7 +7,7 @@ class BillboardsController < ApplicationController
   end
 
   def index
-    @billboards = Billboard.all
+    @billboards = Billboard.all.paginate(:per_page =>5,:page => params[:page])
   end
 
   def new

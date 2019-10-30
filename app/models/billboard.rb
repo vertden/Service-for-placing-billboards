@@ -73,10 +73,7 @@ class Billboard < ApplicationRecord
       b.brand = IF(CURDATE() BETWEEN be.start_date AND DATE_ADD(be.start_date,INTERVAL be.duration MONTH),
         be.brand,null);
     SQL
-
-
   end
-
 
 end
 
