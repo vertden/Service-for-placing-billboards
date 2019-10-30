@@ -131,5 +131,7 @@ ru:
 
   comment:
     submit: "Добавить"
-
+  mailer:
+    confirm: "Ваш запрос одобрен"
+    reject: "Ваш запрос был отклонён"
   confirmation: "Вы уверены?"

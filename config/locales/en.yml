@@ -132,4 +132,7 @@ en:
   comment:
     submit: "Add"
 
+  mailer:
+    confirm: "Your request is approved"
+    reject: "Your request was rejected"
   confirmation: "Are you sure?"
