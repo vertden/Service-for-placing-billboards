@@ -46,6 +46,22 @@ class User < ApplicationRecord
     end
   end
 
+  def self.get_employments_stats(user_id)
+    record = User.connection.select_all(<<-SQL.squish)
+    SELECT b.address,p.price,be.active,
+      be.start_date,
+      DATE_ADD(be.start_date,INTERVAL be.duration MONTH) as end_of_lease
+    FROM users as u
+    INNER JOIN billboard_employments as be
+      on be.user_id = u.id
+    INNER JOIN billboards as b
+      on b.id = be.billboard_id
+    INNER JOIN prices as p
+      on p.id = b.price_id
+    WHERE u.id = #{user_id}
+    SQL
+    record
+  end
 
 end
 

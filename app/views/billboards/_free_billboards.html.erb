@@ -10,7 +10,6 @@
   <% Billboard.get_free_billboards.each do |billboard| %>
     <tr class="table-light">
       <td><%= billboard["address"]  %></td>
-<!--      <td><%#= billboard[""]  %></td>-->
       <td><%= link_to t("billboard.index.billboard_link"), billboard_path(billboard["id"])%></td>
     </tr>
   <% end %>
