@@ -43,12 +43,13 @@ test:
 #   DATABASE_URL="mysql2://myuser:mypass@localhost/somedatabase"
 #
 # You can use this database configuration with:
-#
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
 production:
-  <<: *default
-  database: Service-for-placing-billboards_production
-  username: Service-for-placing-billboards
-  password: <%= ENV['SERVICE-FOR-PLACING-BILLBOARDS_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+#
+#production:
+#  <<: *default
+#  database: Service-for-placing-billboards_production
+#  username: <%= Rails.application.credentials.db_username %>
+#  password: <%= Rails.application.credentials.db_password %>
+#  username: Service-for-placing-billboards
+#  password: <%= ENV['SERVICE-FOR-PLACING-BILLBOARDS_DATABASE_PASSWORD'] %>
