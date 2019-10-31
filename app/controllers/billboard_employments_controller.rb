@@ -20,7 +20,7 @@ class BillboardEmploymentsController < ApplicationController
     @billboard_employment = BillboardEmployment.find(params[:id])
     UserEmailMailer.send_notify(params["user_id"],"reject").deliver
     @billboard_employment.destroy
-    redirect_to billboards_admin_path
+    redirect_to home_path
   end
 
   def set_billboard

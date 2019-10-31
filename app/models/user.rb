@@ -48,7 +48,7 @@ class User < ApplicationRecord
 
   def self.get_employments_stats(user_id)
     record = User.connection.select_all(<<-SQL.squish)
-    SELECT b.address,p.price,be.active,
+    SELECT be.id,be.billboard_id,be.user_id,b.address,p.price,be.active,
       be.start_date,
       DATE_ADD(be.start_date,INTERVAL be.duration MONTH) as end_of_lease
     FROM users as u

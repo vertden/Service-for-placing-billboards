@@ -114,6 +114,7 @@ ru:
       brand: "Бренд"
       none: "Нет"
       vacant: "Свободен"
+      release_date: "Дата освобождения"
     show:
       address: "Адрес"
       price: "Цена за месяц"

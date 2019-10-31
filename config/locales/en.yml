@@ -114,6 +114,7 @@ en:
       brand: "Brand"
       none: "None"
       vacant: "Free"
+      release_date: "Release date"
     show:
       address: "Address"
       price: "Price for month"
