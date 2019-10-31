@@ -33,7 +33,7 @@
     <div class="col-5">
       <div id="new-employment">
         <%= link_to t("billboard.show.request"),
-                    new_billboard_billboard_employment_path(@billboard), remote: true %>
+                    new_billboard_billboard_employment_path(@billboard), remote: true if user_signed_in?%>
       </div>
     </div>
   </div>

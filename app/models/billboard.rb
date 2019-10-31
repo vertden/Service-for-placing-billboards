@@ -1,11 +1,11 @@
 class Billboard < ApplicationRecord
-  validates :address, presence: true, length: {minimum: 5}
-
   has_many :billboard_employments
   has_many :comments, dependent: :destroy
   has_many :prices, dependent: :destroy
   mount_uploader :photo, AvatarUploader
   geocoded_by :get_full_address
+  validates :address, presence: true, length: {minimum: 5}
+  validates :price_id, presence: true, numericality: true
   after_validation :geocode
 
   def get_full_address
