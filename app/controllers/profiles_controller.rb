@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile
 
   def show
+    @employments = User.get_employments_stats(current_user.id)
   end
 
   def edit
