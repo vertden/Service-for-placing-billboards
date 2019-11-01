@@ -1,6 +1,6 @@
 class BillboardEmploymentsController < ApplicationController
   before_action :set_billboard, only: [:new, :create]
-
+  before_action :authenticate_user!
   def new
     @billboard_employment = BillboardEmployment.new
     @adv_types = %w(commercial social)
@@ -18,8 +18,9 @@ class BillboardEmploymentsController < ApplicationController
 
   def destroy
     @billboard_employment = BillboardEmployment.find(params[:id])
+    UserEmailMailer.send_notify(params["user_id"],"reject").deliver
     @billboard_employment.destroy
-    redirect_to billboards_admin_path
+    redirect_to home_path
   end
 
   def set_billboard

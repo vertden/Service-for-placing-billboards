@@ -21,6 +21,35 @@
     </div>
   </div>
 </div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col"><%= t("profile.show.address") %></th>
+    <th scope="col"><%= t("profile.show.price") %></th>
+    <th scope="col"><%= t("profile.show.start_date") %></th>
+    <th scope="col"><%= t("profile.show.end_of_lease") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @employments.each do |employment| %>
+    <tr class=<%= set_class(employment["active"]) %>>
+      <td><%= employment["address"] %></td>
+      <td><%= employment["price"] %></td>
+      <td><%= employment["start_date"] %></td>
+      <td><%= employment["end_of_lease"] %></td>
+      <td>
+        <%= link_to t("admin.requests.reject"),
+                    billboard_billboard_employment_path(:id => employment["id"],
+                                                        :billboard_id => employment["billboard_id"],
+                                                        :user_id => employment["user_id"]),
+                    {:style => 'color: red', :method => :delete,
+                     data: {confirm: t("confirmation")}, class: "delete"} if employment["active"]==1 %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <hr>
 </body>
 

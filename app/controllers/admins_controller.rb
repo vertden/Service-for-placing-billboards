@@ -22,6 +22,7 @@ class AdminsController < ApplicationController
 
   def confirm
     BillboardEmployment.confirm(params["request_id"])
+    UserEmailMailer.send_notify(params["user_id"],"confirm").deliver
     redirect_to billboards_admin_path # Need JS
   end
 
