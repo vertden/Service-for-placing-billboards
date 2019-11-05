@@ -5,11 +5,10 @@ class Billboard < ApplicationRecord
   mount_uploader :photo, AvatarUploader
   geocoded_by :get_full_address
   validates :address, presence: true, length: {minimum: 5}
-  validates :price_id, presence: true, numericality: true
   after_validation :geocode
 
   def get_full_address
-    [address, " Минск"].compact.join(', ')
+    [address, "Минск"].compact.join(', ')
   end
 
   def self.set_price(billboard_id, price_id)

@@ -1,13 +1,15 @@
 class BillboardsController < ApplicationController
   before_action :set_billboard, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new,:edit]
-  before_action :verify_user, only: [:new,:edit]
-  before_action :update_billboard,only: [:index]
+  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :verify_user, only: [:new, :edit]
+  before_action :update_billboard, only: [:index]
+
   def show
+
   end
 
   def index
-    @billboards = Billboard.all.order(params[:sort]).paginate(:per_page =>5,:page => params[:page])
+    @billboards = Billboard.all.order(params[:sort]).paginate(:per_page => 5, :page => params[:page])
   end
 
 
@@ -48,6 +50,7 @@ class BillboardsController < ApplicationController
 
   def set_billboard
     @billboard = Billboard.find(params[:id])
+
   end
 
   def billboard_params
