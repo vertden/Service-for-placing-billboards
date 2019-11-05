@@ -5,7 +5,6 @@ class BillboardsController < ApplicationController
   before_action :update_billboard, only: [:index]
 
   def show
-
   end
 
   def index
@@ -49,8 +48,7 @@ class BillboardsController < ApplicationController
   end
 
   def set_billboard
-    @billboard = Billboard.find(params[:id])
-
+    @billboard = Billboard.find(params[:id]) or record_not_found
   end
 
   def billboard_params
@@ -64,8 +62,8 @@ class BillboardsController < ApplicationController
   end
 
   def verify_user
-    if not current_user.admin
-      redirect_to "home"
+    unless current_user.admin
+      redirect_to home_path
     end
   end
 
