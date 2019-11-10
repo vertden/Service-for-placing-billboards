@@ -1,7 +1,7 @@
 class BillboardsController < ApplicationController
   before_action :set_billboard, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit]
-  before_action :verify_user, only: [:new, :edit]
+  before_action :authenticate_user!, except:[:show, :index]
+  before_action :verify_user, except:[:show, :index]
   before_action :update_billboard, only: [:index]
 
   def show
@@ -48,7 +48,7 @@ class BillboardsController < ApplicationController
   end
 
   def set_billboard
-    @billboard = Billboard.find(params[:id]) or record_not_found
+    @billboard = Billboard.find(params[:id])
   end
 
   def billboard_params

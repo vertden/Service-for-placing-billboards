@@ -63,4 +63,5 @@ RSpec.configure do |config|
 
   # For access to using devise
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
 end
