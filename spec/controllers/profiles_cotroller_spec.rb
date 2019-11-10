@@ -1,12 +1,16 @@
 require 'rails_helper'
-RSpec.describe AdminsController, type: :controller do
-  context "#verification" do
+RSpec.describe ProfilesController, type: :controller do
+  context "#authentication" do
     it "should redirect to authenticate page" do
-      get :billboards
+      get :show
       expect(response).to redirect_to("http://test.host/users/sign_in")
     end
     it "should redirect to authenticate page" do
-      get :users
+      get :edit
+      expect(response).to redirect_to("http://test.host/users/sign_in")
+    end
+    it "should redirect to authenticate page" do
+      put :update, params: {profile: {first_name: "Some new text"}}
       expect(response).to redirect_to("http://test.host/users/sign_in")
     end
   end

@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @billboard.comments.create(comment_params)
-    @comment.nickname =  current_user.nickname
+    @comment.nickname = current_user.nickname
     respond_to do |format|
       if @comment.save
         format.js
