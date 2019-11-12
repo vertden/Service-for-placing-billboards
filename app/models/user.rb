@@ -5,7 +5,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :billboard_employments
-  def self.make_user_admin(id,admin)
+
+  validates :first_name, length: {minimum: 1}
+  validates :second_name, length: {minimum: 1}
+  validates :nickname, length: {minimum: 3}
+  validates :birthday, date: {before: Proc.new { Time.now }}
+  validates :address, length: {minimum: 3}
+
+  def self.make_user_admin(id, admin)
     user = User.find id
     user.update(admin: admin)
   end

@@ -27,8 +27,8 @@ class AdminsController < ApplicationController
   end
 
   def verify_user
-    if not current_user.admin
-      redirect_to "home"
+    unless current_user.admin
+      redirect_to home_path
     end
   end
 
