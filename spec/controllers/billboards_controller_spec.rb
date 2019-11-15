@@ -101,7 +101,7 @@ RSpec.describe BillboardsController, type: :controller do
   context "#destroy" do
     it "should be deleted" do
       delete :destroy, params: {id: billboard.id}
-      expect(response).to redirect_to(billboards_admin_path)
+      expect(response).to redirect_to(admin_billboards_path)
     end
   end
 end

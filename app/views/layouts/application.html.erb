@@ -35,9 +35,9 @@
       <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
         <link class="dropdown-item"><%= link_to t("application.new_billboard"), new_billboard_path,
                                                     {:style => 'color:#808080;', :class => "alert-link ", :remote => false} %>
-        <link class="dropdown-item"><%= link_to t("application.users"), users_admin_path,
+        <link class="dropdown-item"><%= link_to t("application.users"), admin_users_path,
                                                 {:style => 'color:#808080;', :class => "alert-link ", :remote => false} %>
-        <link class="dropdown-item"><%= link_to t("application.employments"), billboards_admin_path,
+        <link class="dropdown-item"><%= link_to t("application.employments"), admin_billboards_path,
                                                 {:style => 'color:#808080;', :class => "alert-link ", :remote => false} %>
       </div>
     </div>

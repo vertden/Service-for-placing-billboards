@@ -44,7 +44,7 @@ class BillboardsController < ApplicationController
 
   def destroy
     @billboard.destroy
-    redirect_to billboards_admin_path
+    redirect_to admin_billboards_path
   end
 
   def set_billboard

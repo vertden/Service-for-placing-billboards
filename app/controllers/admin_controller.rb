@@ -1,4 +1,4 @@
-class AdminsController < ApplicationController
+class AdminController < ApplicationController
   before_action :authenticate_user!
   before_action :verify_user
   def billboards
@@ -12,18 +12,18 @@ class AdminsController < ApplicationController
 
   def appoint_admin
     User.make_user_admin(params["user_id"], true)
-    redirect_to users_admin_path # Need JS
+    redirect_to admin_users_path # Need JS
   end
 
   def remove_admin
     User.make_user_admin(params["user_id"], false)
-    redirect_to users_admin_path # Need JS
+    redirect_to admin_users_path # Need JS
   end
 
   def confirm
     BillboardEmployment.confirm(params["request_id"])
     UserEmailMailer.send_notify(params["user_id"],"confirm").deliver
-    redirect_to billboards_admin_path # Need JS
+    redirect_to admin_billboards_path # Need JS
   end
 
   def verify_user
