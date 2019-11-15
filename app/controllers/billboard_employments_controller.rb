@@ -3,7 +3,6 @@ class BillboardEmploymentsController < ApplicationController
   before_action :authenticate_user!
   def new
     @billboard_employment = BillboardEmployment.new
-    @adv_types = %w(commercial social)
   end
 
   def create
