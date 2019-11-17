@@ -2,11 +2,11 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   has_many :billboard_employments
 
-  validates :first_name, length: {minimum: 1}
-  validates :second_name, length: {minimum: 1}
-  validates :nickname, length: {minimum: 3}
-  validates :birthday, date: {before: Proc.new { Time.now }}
-  validates :address, length: {minimum: 3}
+  validates :first_name, presence: false, length: {minimum: 1}
+  validates :second_name, presence: false, length: {minimum: 1}
+  validates :nickname, presence: false, length: {minimum: 3}
+  validates :birthday, presence: false, date: {before: Proc.new { Time.now }}
+  validates :address, presence: false, length: {minimum: 3}
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   def self.make_user_admin(id, admin)
     user = User.find id
-    user.update(admin: admin)
+    user.update_attribute(:admin, admin)
   end
 
   def self.get_billboards_count(user_id)
@@ -55,7 +55,7 @@ class User < ApplicationRecord
     end
   end
 
-  def self.get_employments_stats(user_id)
+  def get_employments_stats(user)
     record = User.connection.select_all(<<-SQL.squish)
     SELECT be.id,be.billboard_id,be.user_id,b.address,p.price,be.active,
       be.start_date,
@@ -67,7 +67,7 @@ class User < ApplicationRecord
       on b.id = be.billboard_id
     INNER JOIN prices as p
       on p.id = b.price_id
-    WHERE u.id = #{user_id}
+    WHERE u.id = #{user.id}
     SQL
     record
   end

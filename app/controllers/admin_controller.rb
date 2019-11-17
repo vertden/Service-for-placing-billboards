@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
   before_action :authenticate_user!
   before_action :verify_user
+
   def billboards
     @billboards = Billboard.all
     @requests = BillboardEmployment.all
@@ -11,18 +12,20 @@ class AdminController < ApplicationController
   end
 
   def appoint_admin
-    User.make_user_admin(params["user_id"], true)
-    redirect_to admin_users_path # Need JS
+    if User.make_user_admin(params["user_id"], true)
+      redirect_to admin_users_path # Need JS
+    end
   end
 
   def remove_admin
-    User.make_user_admin(params["user_id"], false)
-    redirect_to admin_users_path # Need JS
+    if User.make_user_admin(params["user_id"], false)
+      redirect_to admin_users_path # Need JS
+    end
   end
 
   def confirm
     BillboardEmployment.confirm(params["request_id"])
-    UserEmailMailer.send_notify(params["user_id"],"confirm").deliver
+    UserEmailMailer.send_notify(params["user_id"], "confirm").deliver
     redirect_to admin_billboards_path # Need JS
   end
 

@@ -1,13 +1,9 @@
 <body>
-<h1 class="text-center"><%= t("profile.show.title") %></h1>
+<h2 class="text-center"><%= t("profile.show.title") %></h2>
 <div class="container">
   <div class="row" style="background-image: url(/profile_bg.gif); background-size: cover;">
     <div class="col-3" style="margin-top: 2%;">
-      <% if @profile.avatar? %>
-        <p><%= image_tag @profile.avatar_url(:thumb), :style => "border-radius: 50%;" %></p>
-      <% else %>
-        <p><%= image_tag "/avatar.jpeg", :style => "border-radius: 50%;" %></p>
-      <% end %>
+      <p><%= image_tag @avatar, :style => "border-radius: 50%;" %></p>
     </div>
     <div class="col-5">
       <h3 class="text-left" style="color:white; margin-top: 20%;">
@@ -21,6 +17,7 @@
     </div>
   </div>
 </div>
+<h2 class="text-center"><%= t("profile.show.employments") %></h2>
 <table class="table table-striped">
   <thead>
   <tr>
@@ -31,22 +28,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @employments.each do |employment| %>
-    <tr class=<%= set_class(employment["active"]) %>>
-      <td><%= employment["address"] %></td>
-      <td><%= employment["price"] %></td>
-      <td><%= employment["start_date"] %></td>
-      <td><%= employment["end_of_lease"] %></td>
-      <td>
-        <%= link_to t("admin.requests.reject"),
-                    billboard_billboard_employment_path(:id => employment["id"],
-                                                        :billboard_id => employment["billboard_id"],
-                                                        :user_id => employment["user_id"]),
-                    {:style => 'color: red', :method => :delete,
-                     data: {confirm: t("confirmation")}, class: "delete"} if employment["active"]==1 %>
-      </td>
-    </tr>
-  <% end %>
+  <%= render partial: "employment", collection: @employments %>
   </tbody>
 </table>
 

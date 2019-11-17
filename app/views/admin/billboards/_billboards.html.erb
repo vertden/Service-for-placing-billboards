@@ -1,5 +1,5 @@
 <h3><%= t("admin.billboards.head") %></h3>
-<table class="table table-striped">
+<table class="table ">
   <thead>
   <tr>
     <th scope="col"><%= t("admin.billboards.address") %></th>
@@ -16,26 +16,7 @@
         <%= billboard.address %>
       </td>
       <td>
-        <table class="table">
-          <thead>
-          <tr>
-            <th scope="col"><%= t("admin.billboards.price") %></th>
-            <th scope="col"><%= t("admin.billboards.updated_at") %></th>
-          </tr>
-          </thead>
-          <tbody>
-          <% Price.get_all_prices(billboard.id).each do |data| %>
-            <tr >
-              <td>
-                <%= data["price"] %>
-              </td>
-              <td>
-                <%= data["created_at"] %>
-              </td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+        <%= render "admin/billboards/prices", billboard: billboard %>
       </td>
       <td>
         <%= Billboard.get_days_of_use(billboard.id) %>

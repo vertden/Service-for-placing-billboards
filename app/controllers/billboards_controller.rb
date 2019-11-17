@@ -1,7 +1,7 @@
 class BillboardsController < ApplicationController
   before_action :set_billboard, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except:[:show, :index]
-  before_action :verify_user, except:[:show, :index]
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :verify_user, except: [:show, :index]
   before_action :update_billboard, only: [:index]
 
   def show
@@ -9,8 +9,8 @@ class BillboardsController < ApplicationController
 
   def index
     @billboards = Billboard.all.order(params[:sort]).paginate(:per_page => 5, :page => params[:page])
+    @free_billboards = Billboard.get_free_billboards
   end
-
 
   def new
     @billboard = Billboard.new

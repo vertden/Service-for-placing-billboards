@@ -1,0 +1,13 @@
+<div class="btn-group navbar-brand pr-5" role="group">
+  <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" style=" margin-left: 50%;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= t("application.admin_menu") %>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+    <link class="dropdown-item"><%= link_to t("application.new_billboard"), new_billboard_path,
+                                            {:style => 'color:#808080;', :class => "alert-link ", :remote => false} %>
+    <link class="dropdown-item"><%= link_to t("application.users"), admin_users_path,
+                                            {:style => 'color:#808080;', :class => "alert-link ", :remote => false} %>
+    <link class="dropdown-item"><%= link_to t("application.employments"), admin_billboards_path,
+                                            {:style => 'color:#808080;', :class => "alert-link ", :remote => false} %>
+  </div>
+</div>

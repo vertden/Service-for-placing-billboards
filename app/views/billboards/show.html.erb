@@ -2,24 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th scope="col"><%= t("billboard.show.address") %></th>
-          <th scope="col"><%= t("billboard.show.price") %></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td><%= @billboard.address %></td>
-          <td><%=  Price.get_price(@billboard.price_id) %></td>
-        </tr>
-        </tbody>
-      </table>
+      <%= render "billboard", billboard: @billboard %>
       <%= image_tag @billboard.photo.url if @billboard.photo? %>
 
       <div>
-        <h2>Comments</h2>
+        <h2><%= t("comment.title") %></h2>
         <div class="row" id="row-main">
           <%= render @billboard.comments %>
         </div>
@@ -28,12 +15,11 @@
         <%= link_to image_tag("/add.png", size: "25x25"), new_billboard_comment_path(@billboard),
                     remote: true if user_signed_in? %>
       </div>
-
     </div>
     <div class="col-5">
       <div id="new-employment">
         <%= link_to t("billboard.show.request"),
-                    new_billboard_billboard_employment_path(@billboard), remote: true if user_signed_in?%>
+                    new_billboard_billboard_employment_path(@billboard), remote: true if user_signed_in? %>
       </div>
     </div>
   </div>

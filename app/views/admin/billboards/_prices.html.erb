@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+  <thead class="thead-light">
+  <tr>
+    <th scope="col"><%= t("admin.billboards.price") %></th>
+    <th scope="col"><%= t("admin.billboards.updated_at") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% Price.get_all_prices(billboard.id).each do |data| %>
+    <tr >
+      <td>
+        <%= data["price"] %>
+      </td>
+      <td>
+        <%= data["created_at"] %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -81,6 +81,7 @@ ru:
       title: "Мой Профиль"
       edit: "Редактировать"
       edit_password: "Редактировать пароль"
+      employments: "Мои заявки:"
     edit:
       title: "Настройки"
       first_name: "Имя"
@@ -131,6 +132,7 @@ ru:
       submit: "Отправить"
 
   comment:
+    title: "Комментарии"
     submit: "Добавить"
   mailer:
     confirm: "Ваш запрос одобрен"
