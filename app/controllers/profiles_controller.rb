@@ -3,12 +3,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile
 
   def show
-    @employments = current_user.get_employments_stats(current_user)
-    if @profile.avatar?
-      @avatar = @profile.avatar_url(:thumb)
-    else
-      @avatar = "/avatar.jpeg"
-    end
+    @employments = current_user.get_employments_stats
   end
 
   def edit

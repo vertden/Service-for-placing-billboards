@@ -19,10 +19,10 @@
         <%= render "admin/billboards/prices", billboard: billboard %>
       </td>
       <td>
-        <%= Billboard.get_days_of_use(billboard.id) %>
+        <%= @days_of_use[billboard.id] %>
       </td>
       <td>
-        <%= Billboard.get_days_of_inactivity(billboard.id) %>
+        <%= @days_of_inactive[billboard.id] %>
       </td>
       <td>
         <%= formatted_date(billboard.created_at) %>

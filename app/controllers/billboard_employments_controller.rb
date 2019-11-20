@@ -1,5 +1,5 @@
 class BillboardEmploymentsController < ApplicationController
-  before_action :set_billboard, only: [:new, :create,:destroy]
+  before_action :set_billboard, only: [:new, :create]
   before_action :authenticate_user!
   def new
     @billboard_employment = BillboardEmployment.new

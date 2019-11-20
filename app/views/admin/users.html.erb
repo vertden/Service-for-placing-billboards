@@ -21,10 +21,10 @@
         <%= user.email %>
       </td>
       <td>
-        <%= User.get_billboards_count(user.id) %>
+        <%= @billboards_in_use[user.id] %>
       </td>
       <td>
-        <%= User.get_pay_per_month(user.id) %>
+        <%= @pay_per_month[user.id] %>
       </td>
       <td>
         <%= formatted_date(user.created_at) %>

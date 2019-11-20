@@ -1,7 +1,7 @@
 class Billboard < ApplicationRecord
   has_many :billboard_employments
   has_many :comments, dependent: :destroy
-  has_many :prices, dependent: :destroy
+  belongs_to :price, dependent: :destroy, optional: true
   mount_uploader :photo, AvatarUploader
   geocoded_by :get_full_address
   validates :address, presence: true, length: {minimum: 5}
@@ -16,50 +16,36 @@ class Billboard < ApplicationRecord
     record.update(price_id: price_id)
   end
 
-  def self.get_days_of_use(billboard_id)
-    days_of_use = Billboard.connection.select_all(<<-SQL.squish)
-      SELECT b.id, 
-       SUM(IF(DATE_ADD(b_e.start_date,INTERVAL duration MONTH) <= CURDATE(),
-         DATEDIFF(DATE_ADD(b_e.start_date,INTERVAL duration MONTH),b_e.start_date),
-         IF(b_e.start_date <= CURDATE(), DATEDIFF(CURDATE(),b_e.start_date),0 ) )) as days_of_use
-       FROM billboard_employments as b_e
-       RIGHT JOIN billboards as b
-         on b.id = b_e.billboard_id
-       WHERE b.id = #{billboard_id}
-       GROUP BY b.id;
-    SQL
-    days_of_use.to_hash[0]["days_of_use"]
+  def self.get_days_of_use
+    @days_of_use = Hash.new(0)
+    BillboardEmployment.select(:id, :billboard_id, :start_date, :duration).find_each do |employment|
+      end_date = employment.start_date + employment.duration.month
+      if end_date <= Date.today
+        @days_of_use[employment.billboard_id] += (end_date - employment.start_date).to_i
+      elsif employment.start_date <= Date.today
+        @days_of_use[employment.billboard_id] += (Date.today - employment.start_date).to_i
+      else
+        @days_of_use[employment.billboard_id] += 0
+      end
+    end
+    return @days_of_use
   end
 
-  def self.get_days_of_inactivity(billboard_id)
-    days_of_inactivity = Billboard.connection.select_all(<<-SQL.squish)
-       SELECT selected.id, DATEDIFF(CURDATE(),b.created_at + selected.days_of_use) as days_of_inactivity 
-       FROM
-         (SELECT b.id, 
-       SUM(IF(DATE_ADD(b_e.start_date,INTERVAL duration MONTH) <= CURDATE(),
-         DATEDIFF(DATE_ADD(b_e.start_date,INTERVAL duration MONTH),b_e.start_date),
-         IF(b_e.start_date <= CURDATE(), DATEDIFF(CURDATE(),b_e.start_date),0 ) )) as days_of_use
-       FROM billboard_employments as b_e
-       RIGHT JOIN billboards as b
-         on b.id = b_e.billboard_id
-       GROUP BY b.id) as selected
-       LEFT JOIN billboards as b
-         on b.id = selected.id
-       WHERE b.id = #{billboard_id};
-    SQL
-    days_of_inactivity.to_hash[0]["days_of_inactivity"]
+  def self.get_days_of_inactivity
+    @days_of_inactivity = Hash.new(0)
+    BillboardEmployment.select(:id, :billboard_id, :start_date, :duration, "billboards.created_at").
+        joins(:billboard).find_each do |employment|
+      @days_of_inactivity[employment.billboard_id] +=
+          (Date.today - (employment.created_at.to_date + @days_of_use[employment.billboard_id])).to_i
+    end
+    return @days_of_inactivity
   end
 
   def self.get_free_billboards
-    not_active = Billboard.connection.select_all(<<-SQL.squish)
-      SELECT b.id,b.address FROM billboards as b
-      INNER JOIN billboard_employments as b_e
-	      on b.id = b_e.billboard_id
-      WHERE CURDATE() NOT BETWEEN b_e.start_date and DATE_ADD(b_e.start_date,INTERVAL duration MONTH)
-      GROUP BY b.id,b.address;
-    SQL
-    not_active.to_hash
-
+    # Return the list of free billboards
+    Billboard.select(:id, :address).joins(:billboard_employments).where("
+    :date NOT BETWEEN start_date AND DATE_ADD(start_date,INTERVAL duration MONTH)",
+                                                                        date: Date.today).group(:id, :address)
   end
 
   def self.update_params
@@ -74,18 +60,16 @@ class Billboard < ApplicationRecord
     SQL
   end
 
-  def self.get_release_date(billboard_id)
-    release_date = Billboard.connection.select_all(<<-SQL.squish)
-    SELECT distinct b.id, IF(DATEDIFF(start_date, CURDATE())>=0, DATEDIFF(start_date, CURDATE()),
-      IF(DATEDIFF(DATE_ADD(start_date,INTERVAL duration MONTH),CURDATE())>=0,
-        DATEDIFF(DATE_ADD(start_date,INTERVAL duration MONTH),CURDATE()), 0)) as date
-    FROM billboard_employments as be
-    RIGHT JOIN billboards as b
-		  on b.id =be.billboard_id
-    WHERE b.id = #{billboard_id}
-    SQL
-    Date.today + release_date.to_hash[0]['date']
+  def self.get_release_date
+    # Return date when billboard will become free
+    @date = Hash.new(0)
+    BillboardEmployment.select(:id, :billboard_id, :start_date, :duration).joins(:billboard).where.not(active: true).find_each do |employment|
+      end_date = employment.start_date + employment.duration.month
+      if end_date >= Date.today
+        @date[employment.billboard_id] = end_date
+      end
+    end
+    return @date
   end
-
 end
 

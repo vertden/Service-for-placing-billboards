@@ -7,13 +7,12 @@ module BillboardsHelper
     end
   end
 
-  def get_date(id)
-    date=Billboard.get_release_date(id)
-    if date == Date.today
-      date
+  def get_date(billboard)
+    release_date = @release_date[billboard.id]
+    unless @release_date[billboard.id] == 0
+      release_date
     else
       t("billboard.index.vacant")
     end
-
   end
 end

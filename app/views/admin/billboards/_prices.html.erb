@@ -9,10 +9,10 @@
   <% Price.get_all_prices(billboard.id).each do |data| %>
     <tr >
       <td>
-        <%= data["price"] %>
+        <%= data.price %>
       </td>
       <td>
-        <%= data["created_at"] %>
+        <%= data.created_at %>
       </td>
     </tr>
   <% end %>

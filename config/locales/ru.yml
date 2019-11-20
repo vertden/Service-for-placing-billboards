@@ -81,6 +81,10 @@ ru:
       title: "Мой Профиль"
       edit: "Редактировать"
       edit_password: "Редактировать пароль"
+      address: "Адрес"
+      price: "Цена"
+      start_date: "Дата начала"
+      end_of_lease: "Дата окончания"
       employments: "Мои заявки:"
     edit:
       title: "Настройки"
@@ -134,6 +138,7 @@ ru:
   comment:
     title: "Комментарии"
     submit: "Добавить"
+
   mailer:
     confirm: "Ваш запрос одобрен"
     reject: "Ваш запрос был отклонён"

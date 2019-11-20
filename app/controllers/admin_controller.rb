@@ -5,10 +5,14 @@ class AdminController < ApplicationController
   def billboards
     @billboards = Billboard.all
     @requests = BillboardEmployment.all
+    @days_of_use = Billboard.get_days_of_use
+    @days_of_inactive = Billboard.get_days_of_inactivity
   end
 
   def users
     @users = User.all
+    @billboards_in_use = User.get_billboards_count
+    @pay_per_month = User.get_pay_per_month
   end
 
   def appoint_admin

@@ -56,7 +56,7 @@ RSpec.describe BillboardsController, type: :controller do
     end
   end
 
-  context " #new" do
+  context "#new" do
     it "should render new page" do
       @user = User.last
       sign_in @user

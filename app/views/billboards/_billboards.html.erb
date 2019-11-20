@@ -15,7 +15,7 @@
       <td><%= Price.get_price(billboard.price_id) %></td>
       <td><%= check_for_null(billboard.adv_type) %></td>
       <td><%= check_for_null(billboard.brand) %></td>
-      <td><%= get_date(billboard.id) %></td>
+      <td><%= @release_date[billboard.id] %></td>
       <td><%= link_to t("billboard.index.billboard_link"), billboard_path(billboard) %></td>
     </tr>
   <% end %>
