@@ -12,7 +12,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @requests.order('active DESC').each do |request| %>
+  <% @requests.each do |request| %>
     <tr id="request" class=<%= set_class(request.active) %>>
       <td>
         <%= request.body %>

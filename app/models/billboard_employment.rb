@@ -12,10 +12,5 @@ class BillboardEmployment < ApplicationRecord
   validates :duration, presence: true, numericality: {greater_than_or_equal_to: 1}
   validates :user_id, presence: true, numericality: {greater_than: 0}
 
-  def self.confirm(id)
-    record = BillboardEmployment.find id
-    record.update(active: false)
-  end
-
 end
 

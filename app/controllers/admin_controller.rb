@@ -3,8 +3,8 @@ class AdminController < ApplicationController
   before_action :verify_user
 
   def billboards
-    @billboards = Billboard.all
-    @requests = BillboardEmployment.all
+    @billboards = Billboard
+    @requests = BillboardEmployment.order('active DESC')
     @days_of_use = Billboard.get_days_of_use
     @days_of_inactive = Billboard.get_days_of_inactivity
   end
@@ -28,7 +28,7 @@ class AdminController < ApplicationController
   end
 
   def confirm
-    BillboardEmployment.confirm(params["request_id"])
+    BillboardEmployment.find(params["request_id"]).update_attribute(:active, false)
     UserEmailMailer.send_notify(params["user_id"], "confirm").deliver
     redirect_to admin_billboards_path # Need JS
   end

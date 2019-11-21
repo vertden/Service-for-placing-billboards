@@ -1,7 +1,7 @@
 class Billboard < ApplicationRecord
   has_many :billboard_employments
   has_many :comments, dependent: :destroy
-  belongs_to :price, dependent: :destroy, optional: true
+  belongs_to :price,validate: true, dependent: :destroy, optional: true
   mount_uploader :photo, AvatarUploader
   geocoded_by :get_full_address
   validates :address, presence: true, length: {minimum: 5}
