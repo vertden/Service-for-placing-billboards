@@ -6,7 +6,7 @@
   </tr>
   </thead>
   <tbody>
-  <% Price.get_all_prices(billboard.id).find_each do |data| %>
+  <% billboard.get_all_prices.find_each do |data| %>
     <tr >
       <td>
         <%= data.price %>

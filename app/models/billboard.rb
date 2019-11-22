@@ -1,7 +1,7 @@
 class Billboard < ApplicationRecord
   has_many :billboard_employments
   has_many :comments, dependent: :destroy
-  belongs_to :price,validate: true, dependent: :destroy, optional: true
+  belongs_to :price, dependent: :destroy, optional: true,validate: true
   mount_uploader :photo, AvatarUploader
   geocoded_by :get_full_address
   validates :address, presence: true, length: {minimum: 5}
@@ -11,9 +11,14 @@ class Billboard < ApplicationRecord
     [address, "Минск"].compact.join(', ')
   end
 
-  def self.set_price(billboard_id, price_id)
-    record = Billboard.find billboard_id
-    record.update(price_id: price_id)
+  def get_price
+    # Find price for billboard
+    Price.joins(:billboard).where(prices: {id: price_id})[0].price
+  end
+
+  def get_all_prices
+    # Find all prices for all the time for billboard
+    Price.joins(:billboard).where(prices: {billboard_id: id})
   end
 
   def self.get_days_of_use
@@ -48,18 +53,6 @@ class Billboard < ApplicationRecord
                                                                         date: Date.today).group(:id, :address)
   end
 
-  def self.update_params
-    Billboard.connection.select_all(<<-SQL.squish)
-      UPDATE billboards as b 
-      JOIN billboard_employments as be
-        on be.billboard_id = b.id
-      SET b.adv_type = IF(CURDATE() BETWEEN be.start_date AND DATE_ADD(be.start_date,INTERVAL be.duration MONTH),
-        be.adv_type,null),
-      b.brand = IF(CURDATE() BETWEEN be.start_date AND DATE_ADD(be.start_date,INTERVAL be.duration MONTH),
-        be.brand,null);
-    SQL
-  end
-
   def self.get_release_date
     # Return date when billboard will become free
     @date = Hash.new(0)
@@ -70,6 +63,23 @@ class Billboard < ApplicationRecord
       end
     end
     return @date
+  end
+
+  def self.set_price(billboard_id, price_id)
+    record = Billboard.find billboard_id
+    record.update(price_id: price_id)
+  end
+
+  def self.update_params
+    Billboard.connection.select_all(<<-SQL.squish)
+      UPDATE billboards as b 
+      JOIN billboard_employments as be
+        on be.billboard_id = b.id
+      SET b.adv_type = IF(CURDATE() BETWEEN be.start_date AND DATE_ADD(be.start_date,INTERVAL be.duration MONTH),
+        be.adv_type,null),
+      b.brand = IF(CURDATE() BETWEEN be.start_date AND DATE_ADD(be.start_date,INTERVAL be.duration MONTH),
+        be.brand,null);
+    SQL
   end
 end
 
