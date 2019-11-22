@@ -16,13 +16,15 @@ class AdminController < ApplicationController
   end
 
   def appoint_admin
-    if User.make_user_admin(params["user_id"], true)
+    @user = User.find(params["user_id"])
+    if @user.make_admin
       redirect_to admin_users_path # Need JS
     end
   end
 
   def remove_admin
-    if User.make_user_admin(params["user_id"], false)
+    @user = User.find(params["user_id"])
+    if @user.remove_admin
       redirect_to admin_users_path # Need JS
     end
   end

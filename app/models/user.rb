@@ -13,10 +13,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  def make_admin
+    update_attribute(:admin, true)
+  end
 
-  def self.make_user_admin(id, admin)
-    user = User.find id
-    user.update_attribute(:admin, admin)
+  def remove_admin
+    update_attribute(:admin, false)
   end
 
   def self.get_billboards_count

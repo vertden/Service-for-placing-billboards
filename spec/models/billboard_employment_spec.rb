@@ -120,20 +120,4 @@ RSpec.describe BillboardEmployment do
       expect(employment.save).to eq(true)
     end
   end
-
-  context "method tests" do
-    it "should update active field" do
-      employment = BillboardEmployment.new(brand: "Some text",
-                                           body: "Some text",
-                                           adv_type: "Some text",
-                                           billboard_id: 1,
-                                           start_date: Date.tomorrow.to_s,
-                                           duration: 1,
-                                           user_id: 1)
-      employment.save
-      expect(BillboardEmployment.confirm(employment.id)).to eq(true)
-    end
-
-  end
-
 end
