@@ -2,11 +2,11 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   has_many :billboard_employments
 
-  validates :first_name, presence: false, length: {minimum: 1}
-  validates :second_name, presence: false, length: {minimum: 1}
-  validates :nickname, presence: false, length: {minimum: 3}
-  validates :birthday, presence: false, date: {before: Proc.new { Time.now }}
-  validates :address, presence: false, length: {minimum: 3}
+  validates :first_name, presence: false, allow_blank: true, length: {minimum: 1}
+  validates :second_name, presence: false, allow_blank: true, length: {minimum: 1}
+  validates :nickname, presence: false, allow_blank: true, length: {minimum: 3}
+  validates :birthday, presence: false, allow_blank: true, date: {before: Proc.new { Time.now }}
+  validates :address, presence: false, allow_blank: true, length: {minimum: 3}
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
