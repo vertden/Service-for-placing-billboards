@@ -1,4 +1,9 @@
 <%= form_with(model: billboard_employment, local: false, url: billboard_billboard_employments_path) do |form| %>
+<% if @billboard.errors.any? %>
+    <% @billboard.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger"><%= message %></div>
+    <% end %>
+  <% else %>
   <div class="col-8">
     <h2><%= t("employment.new.head") %></h2>
     <p>
@@ -11,7 +16,7 @@
     </p>
     <p>
       <%= t("employment.new.adv_type") %>
-      <%= form.select(:adv_type,@adv_types, {}, {:class => "form-control"}) %>
+      <%= form.select(:adv_type,BillboardEmployment::ADV_TYPES, {}, {:class => "form-control"}) %>
     </p>
     <p>
       <%= t("employment.new.start_date") %>
@@ -25,4 +30,5 @@
       <%= form.submit t("employment.new.submit"), :class => "btn btn-success" %>
     </div>
   </div>
+  <% end %>
 <% end %>

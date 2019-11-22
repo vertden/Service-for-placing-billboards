@@ -1,0 +1,14 @@
+<tr class=<%= set_class(employment["active"]) %>>
+  <td><%= employment["address"] %></td>
+  <td><%= employment["price"] %></td>
+  <td><%= employment["start_date"] %></td>
+  <td><%= end_of_lease(employment) %></td>
+  <td>
+    <%= link_to t("admin.requests.reject"),
+                billboard_billboard_employment_path(:id => employment["id"],
+                                                    :billboard_id => employment["billboard_id"],
+                                                    :user_id => current_user.id),
+                {:style => 'color: red', :method => :delete,
+                 data: {confirm: t("confirmation")}, class: "delete"} if employment["active"] %>
+  </td>
+</tr>

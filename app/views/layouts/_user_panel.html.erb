@@ -1,0 +1,13 @@
+<div class="btn-group navbar-brand pr-5" role="group">
+  <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" style=" margin-left: 50%;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= t("application.menu") %>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+    <link class="dropdown-item"><%= link_to t("application.profile"), profile_path,
+                                            {:style => 'color:#808080;', :class => "alert-link"} %>
+    <link class="dropdown-item"><%= link_to t("application.settings"), edit_profile_path,
+                                            {:style => 'color:#808080;', :class => "alert-link"} %>
+    <link class="dropdown-item"><%= link_to t("application.sign_out"), destroy_user_session_path,
+                                            {:style => 'color:#808080;', :class => "alert-link", :method => :delete} %>
+  </div>
+</div>

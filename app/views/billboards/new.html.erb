@@ -1,33 +1,6 @@
 <body >
 <h2 ><%= t('billboard.new.head')%></h2>
 <%= form_for :billboard, html: {miltipart: true}, url: billboards_path do |f| %>
-  <% if @billboard.errors.any? %>
-    <% @billboard.errors.full_messages.each do |message| %>
-      <div class="alert alert-danger"><%= message %></div>
-    <% end %>
-  <% else %>
-    <div class="col-7">
-      <p>
-        <%= t('billboard.new.address') %>
-        <%= f.text_field(:address, {autofocus: true, :class => "form-control"}) %>
-      </p>
-      <p>
-        <%= t('billboard.new.price') %>
-        <%= fields_for :price do |price_form| %>
-          <%= price_form.number_field :price, {:class => "form-control"}%>
-        <% end %>
-      </p>
-      <hr>
-      <div class="custom-file">
-        <p>
-          <%= f.file_field :photo, {:class => "custom-file-label", :placeholder => t("billboard.new.photo")} %>
-        </p>
-      </div>
-      <hr>
-      <p>
-        <%= f.submit t('billboard.new.submit'), :class => "btn btn-success" %>
-      </p>
-    </div>
-  <% end %>
+  <%= render partial: "form", locals: {f: f} %>
 <% end %>
 </body>

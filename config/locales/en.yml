@@ -81,6 +81,11 @@ en:
       title: "My profile"
       edit: "Edit"
       edit_password: "Edit password"
+      address: "Address"
+      price: "Price"
+      start_date: "Start date"
+      end_of_lease: "End of lease"
+      employments: "My employments:"
     edit:
       title: "Settings"
       first_name: "First name"
@@ -131,6 +136,7 @@ en:
       submit: "Send"
 
   comment:
+    title: "Comments"
     submit: "Add"
 
   mailer:

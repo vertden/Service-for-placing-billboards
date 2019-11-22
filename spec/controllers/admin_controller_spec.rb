@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe AdminsController, type: :controller do
+RSpec.describe AdminController, type: :controller do
   context "#authentication" do
     let(:user) {User.first}
     it "should redirect to authenticate page" do
@@ -53,7 +53,7 @@ RSpec.describe AdminsController, type: :controller do
     end
   end
 end
-RSpec.describe AdminsController, type: :controller do
+RSpec.describe AdminController, type: :controller do
   before(:each) do
     #last user is admin
     @user = User.last
@@ -74,24 +74,24 @@ RSpec.describe AdminsController, type: :controller do
   end
 
   context "#appoint_admin" do
-    it "should redirect to users_admin_path" do
+    it "should redirect to admin_users_path" do
       patch :appoint_admin, params: {user_id: @user.id}
-      expect(response).to redirect_to(users_admin_path)
+      expect(response).to redirect_to(admin_users_path)
     end
   end
 
   context "#remove_admin" do
-    it "should redirect to users_admin_path" do
+    it "should redirect to admin_users_path" do
       patch :remove_admin, params: {user_id: @user.id}
-      expect(response).to redirect_to(users_admin_path)
+      expect(response).to redirect_to(admin_users_path)
     end
   end
 
   context "#confirm" do
-    it "should redirect to billboards_admin_path" do
+    it "should redirect to admin_billboards_path" do
       patch :confirm, params: {user_id: @user.id,
                                request_id: BillboardEmployment.first.id}
-      expect(response).to redirect_to(billboards_admin_path)
+      expect(response).to redirect_to(admin_billboards_path)
     end
   end
 

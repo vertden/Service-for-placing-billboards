@@ -27,37 +27,9 @@
   <h5 class="navbar-brand ">
     <%= link_to image_tag("/main.png", size: "35x35"), home_path, {:style => 'color:CC;', :class => "alert-link"} %>
   </h5>
-  <% if user_signed_in? and current_user.admin %>
-    <div class="btn-group navbar-brand pr-5" role="group">
-      <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" style=" margin-left: 50%;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= t("application.admin_menu") %>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-        <link class="dropdown-item"><%= link_to t("application.new_billboard"), new_billboard_path,
-                                                    {:style => 'color:#808080;', :class => "alert-link ", :remote => false} %>
-        <link class="dropdown-item"><%= link_to t("application.users"), users_admin_path,
-                                                {:style => 'color:#808080;', :class => "alert-link ", :remote => false} %>
-        <link class="dropdown-item"><%= link_to t("application.employments"), billboards_admin_path,
-                                                {:style => 'color:#808080;', :class => "alert-link ", :remote => false} %>
-      </div>
-    </div>
-  <% end %>
-
-
+  <%= render "layouts/admin_panel" if user_signed_in? and current_user.admin %>
   <% if user_signed_in? %>
-    <div class="btn-group navbar-brand pr-5" role="group">
-      <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" style=" margin-left: 50%;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= t("application.menu") %>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-        <link class="dropdown-item"><%= link_to t("application.profile"), profile_path,
-                                                {:style => 'color:#808080;', :class => "alert-link"} %>
-        <link class="dropdown-item"><%= link_to t("application.settings"), edit_profile_path,
-                                                {:style => 'color:#808080;', :class => "alert-link"} %>
-        <link class="dropdown-item"><%= link_to t("application.sign_out"), destroy_user_session_path,
-                                                {:style => 'color:#808080;', :class => "alert-link", :method => :delete} %>
-      </div>
-    </div>
+  <%= render "layouts/user_panel" %>
   <% else %>
     <h6><%= link_to t("application.log_in"), new_user_session_path, {:style => 'color:	#C0C0C0;', :class => "alert-link"} %></h6>
   <% end %>

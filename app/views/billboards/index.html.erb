@@ -9,8 +9,8 @@
 <!--The div element for the map -->
 <div id="map"></div>
 <div class="col-8">
-  <%= render 'billboards' %>
-  <%= render 'free_billboards' %>
+  <%= render 'billboards', billboards: @billboards %>
+  <%= render 'free_billboards', free_billboards: @free_billboards %>
 </div>
 </body>
 </html>

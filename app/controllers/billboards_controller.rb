@@ -1,7 +1,7 @@
 class BillboardsController < ApplicationController
   before_action :set_billboard, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except:[:show, :index]
-  before_action :verify_user, except:[:show, :index]
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :verify_user, except: [:show, :index]
   before_action :update_billboard, only: [:index]
 
   def show
@@ -9,18 +9,18 @@ class BillboardsController < ApplicationController
 
   def index
     @billboards = Billboard.all.order(params[:sort]).paginate(:per_page => 5, :page => params[:page])
+    @free_billboards = Billboard.get_free_billboards
+    @release_date = Billboard.get_release_date
   end
-
 
   def new
     @billboard = Billboard.new
-    @billboard.prices.new
   end
 
   def create
     @billboard = Billboard.new(billboard_params)
     if @billboard.save
-      @price = @billboard.prices.create(price_params)
+      @price = @billboard.create_price(price: params[:price][:price],billboard_id: @billboard.id)
       Billboard.set_price(@price.billboard_id, @price.id)
       redirect_to home_path
     else
@@ -34,7 +34,7 @@ class BillboardsController < ApplicationController
 
   def update
     if @billboard.update(billboard_params)
-      @price = @billboard.prices.create(price_params)
+      @price = @billboard.create_price(price: params[:price][:price],billboard_id: @billboard.id)
       Billboard.set_price(@price.billboard_id, @price.id)
       redirect_to home_path
     else
@@ -44,7 +44,7 @@ class BillboardsController < ApplicationController
 
   def destroy
     @billboard.destroy
-    redirect_to billboards_admin_path
+    redirect_to admin_billboards_path
   end
 
   def set_billboard

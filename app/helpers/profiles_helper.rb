@@ -1,9 +1,14 @@
 module ProfilesHelper
-  def set_class(active)
-    if active == 1
-      "table-warning"
+  def end_of_lease(employment)
+    employment["start_date"] + employment["duration"].month
+  end
+
+  def get_avatar
+    if @profile.avatar?
+      @profile.avatar_url(:thumb)
     else
-      "table-light"
+      "/avatar.jpeg"
     end
   end
+
 end

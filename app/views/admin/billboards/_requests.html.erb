@@ -12,7 +12,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @requests.order('active DESC').each do |request| %>
+  <% @requests.each do |request| %>
     <tr id="request" class=<%= set_class(request.active) %>>
       <td>
         <%= request.body %>
@@ -34,9 +34,8 @@
       </td>
       <td>
         <% if request.active %>
-          <%= link_to t("admin.requests.confirm"), confirm_admin_path(:request_id => request.id, :user_id => request.user_id),
+          <%= link_to t("admin.requests.confirm"), admin_confirm_path(:request_id => request.id, :user_id => request.user_id),
                       method: :patch, style: 'color: green' %>
-
           </td>
           <td>
             <%= link_to t("admin.requests.reject"),

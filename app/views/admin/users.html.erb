@@ -21,10 +21,10 @@
         <%= user.email %>
       </td>
       <td>
-        <%= User.get_billboards_count(user.id) %>
+        <%= @billboards_in_use[user.id] %>
       </td>
       <td>
-        <%= User.get_pay_per_month(user.id) %>
+        <%= @pay_per_month[user.id] %>
       </td>
       <td>
         <%= formatted_date(user.created_at) %>
@@ -33,10 +33,10 @@
         <%= user.admin %>
       </td>
       <td>
-        <%= link_to t("admin.users.appoint_admin"), appoint_admin_admin_path(:user_id => user.id), method: :patch %>
+        <%= link_to t("admin.users.appoint_admin"), admin_appoint_admin_path(:user_id => user.id), method: :patch %>
       </td>
       <td>
-        <%= link_to t("admin.users.remove_admin"), remove_admin_admin_path(:user_id => user.id), method: :patch %>
+        <%= link_to t("admin.users.remove_admin"), admin_remove_admin_path(:user_id => user.id), method: :patch %>
       </td>
     </tr>
   <% end %>

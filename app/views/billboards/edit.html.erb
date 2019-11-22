@@ -1,26 +1,6 @@
 <body>
 <h2><%= t('billboard.edit.head') %></h2>
 <%= form_for :billboard, html: {miltipart: true}, url: billboard_path, method: :patch do |f| %>
-  <div class="col-7">
-    <p>
-      <%= t('billboard.edit.address') %>
-      <%= f.text_field(:address, {autofocus: true, :class => "form-control"}) %>
-    </p>
-    <p>
-      <%= t('billboard.new.price') %>
-      <%= fields_for :price do |price_form| %>
-        <%= price_form.number_field :price, {:class => "form-control"}%>
-      <% end %>
-    </p>
-    <div class="custom-file">
-      <p>
-        <%= f.file_field(:photo, {:class => "custom-file-label", :placeholder => t("billboard.edit.photo")}) %>
-      </p>
-    </div>
-    <hr>
-    <p>
-      <%= f.submit t("billboard.edit.submit"), :class => "btn btn-success" %>
-    </p>
-  </div>
+  <%= render partial: "form", locals: {f: f} %>
 <% end %>
 </body>
