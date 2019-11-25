@@ -1,37 +1,43 @@
 <body>
 <h2><%= t("profile.edit.title") %></h2>
 <%= form_for :profile, url: profile_path, method: :patch do |f| %>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label"><%= t("profile.edit.first_name") %></label>
-    <%= f.text_field :first_name, {autocomplete: "first_name",
+  <% if @profile.errors.any? %>
+    <% @profile.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger"><%= message %></div>
+    <% end %>
+  <% else %>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"><%= t("profile.edit.first_name") %></label>
+      <%= f.text_field :first_name, {autocomplete: "first_name",
+                                     :class => "col-3 mb-2 form-control"} %>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"><%= t("profile.edit.second_name") %></label>
+      <%= f.text_field :second_name, {autocomplete: "second_name",
+                                      :class => "col-3 mb-2 form-control"} %>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"><%= t("profile.edit.nickname") %></label>
+      <%= f.text_field :nickname, {autocomplete: "nickname",
                                    :class => "col-3 mb-2 form-control"} %>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label"><%= t("profile.edit.second_name") %></label>
-    <%= f.text_field :second_name, {autocomplete: "second_name",
-                                    :class => "col-3 mb-2 form-control"} %>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label"><%= t("profile.edit.nickname") %></label>
-    <%= f.text_field :nickname, {autocomplete: "nickname",
-                                 :class => "col-3 mb-2 form-control"} %>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label"><%= t("profile.edit.birthday") %></label>
-    <%= f.date_field :birthday, {autocomplete: "birthday",
-                                 :class => "col-3 mb-2 form-control"} %>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label"><%= t("profile.edit.address") %></label>
-    <%= f.text_field :address, {autocomplete: "address",
-                                :class => "col-3 form-control"} %>
-  </div>
-  <hr>
-  <label><%= t("profile.edit.avatar") %></label>
-  <p class="custom-file">
-    <%= f.file_field :avatar, {:class => "custom-file-label "} %>
-  </p>
-  <%= f.submit t("profile.edit.submit"), {:class => "mt-2 mb-2 btn btn-success"} %>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"><%= t("profile.edit.birthday") %></label>
+      <%= f.date_field :birthday, {autocomplete: "birthday",
+                                   :class => "col-3 mb-2 form-control"} %>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"><%= t("profile.edit.address") %></label>
+      <%= f.text_field :address, {autocomplete: "address",
+                                  :class => "col-3 form-control"} %>
+    </div>
+    <hr>
+    <label><%= t("profile.edit.avatar") %></label>
+    <p class="custom-file">
+      <%= f.file_field :avatar, {:class => "custom-file-label "} %>
+    </p>
+    <%= f.submit t("profile.edit.submit"), {:class => "mt-2 mb-2 btn btn-success"} %>
+  <% end %>
 <% end %>
 <p class="text-muted"><%= t("profile.edit.language") %>
   <%= link_to "Русский", {locale: :ru} %>
