@@ -2,7 +2,6 @@ class BillboardsController < ApplicationController
   before_action :set_billboard, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
   before_action :verify_user, except: [:show, :index]
-  before_action :update_billboard, only: [:index]
 
   def show
   end
@@ -67,7 +66,4 @@ class BillboardsController < ApplicationController
     end
   end
 
-  def update_billboard
-    Billboard.update_params
-  end
 end

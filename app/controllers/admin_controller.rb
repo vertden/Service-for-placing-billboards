@@ -31,7 +31,7 @@ class AdminController < ApplicationController
 
   def confirm
     BillboardEmployment.find(params["request_id"]).update_attribute(:active, false)
-    UserEmailMailer.send_notify(params["user_id"], "confirm").deliver
+    SendNotificationJob.perform_later(user_id = params["user_id"],action = "confirm")
     redirect_to admin_billboards_path # Need JS
   end
 
