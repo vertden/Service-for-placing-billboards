@@ -37,10 +37,10 @@ RSpec.describe ProfilesController, type: :controller do
   context "#update" do
     it "should be update" do
       put :update, params: {profile: {first_name: "Some new text"}}
-      expect(response).to be_successful
+      expect(response).to redirect_to(profile_path)
     end
     it "should render edit page" do
-      put :update, params: {profile:{birtday: Date.yesterday}}
+      put :update, params: {profile:{address: "a"}}
       expect(response).to render_template("edit")
     end
   end
