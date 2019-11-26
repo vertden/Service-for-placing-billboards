@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
   <script async defer
           src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.map_key %>&callback=initMap">
   </script>
-</head>
-<body>
 <!--The div element for the map -->
 <div id="map"></div>
 <div class="col-8">
   <%= render 'billboards', billboards: @billboards %>
   <%= render 'free_billboards', free_billboards: @free_billboards %>
 </div>
-</body>
-</html>

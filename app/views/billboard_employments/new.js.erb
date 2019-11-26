@@ -1,1 +1,1 @@
-$('#new-employment a').hide().parent().append("<%= j render 'form', billboard_employment: @billboard_employment %>")
+$('#new-employment').hide().parent().prepend("<%= j render 'form', billboard_employment: @billboard_employment %>")

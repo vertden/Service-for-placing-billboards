@@ -1,6 +1,4 @@
-<body>
 <h2><%= t('billboard.edit.head') %></h2>
 <%= form_for :billboard, html: {miltipart: true}, url: billboard_path, method: :patch do |f| %>
   <%= render partial: "form", locals: {f: f} %>
 <% end %>
-</body>
