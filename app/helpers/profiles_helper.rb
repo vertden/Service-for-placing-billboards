@@ -7,7 +7,7 @@ module ProfilesHelper
     if @profile.avatar?
       @profile.avatar_url(:thumb)
     else
-      "/avatar.jpeg"
+      "avatar.jpeg"
     end
   end
 

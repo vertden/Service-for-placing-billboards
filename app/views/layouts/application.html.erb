@@ -2,7 +2,7 @@
 <html>
 <head>
   <title><%= t("application.head") %></title>
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' %>
@@ -25,7 +25,7 @@
 
 <nav class="navbar navbar-dark bg-dark">
   <h5 class="navbar-brand ">
-    <%= link_to image_tag("/main.png", size: "35x35"), home_path, {:style => 'color:CC;', :class => "alert-link"} %>
+    <%= link_to image_tag("main.png", size: "35x35"), home_path, {:style => 'color:CC;', :class => "alert-link"} %>
   </h5>
   <%= render "layouts/admin_panel" if user_signed_in? and current_user.admin %>
   <% if user_signed_in? %>
