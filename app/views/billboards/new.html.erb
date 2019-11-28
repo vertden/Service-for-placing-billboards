@@ -1,6 +1,4 @@
-<body >
-<h2 ><%= t('billboard.new.head')%></h2>
+<h2><%= t('billboard.new.head') %></h2>
 <%= form_for :billboard, html: {miltipart: true}, url: billboards_path do |f| %>
   <%= render partial: "form", locals: {f: f} %>
 <% end %>
-</body>

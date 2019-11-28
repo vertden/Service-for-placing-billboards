@@ -1,4 +1,3 @@
-<body>
 <h2><%= t("profile.edit.title") %></h2>
 <%= form_for :profile, url: profile_path, method: :patch do |f| %>
   <% if @profile.errors.any? %>
@@ -43,4 +42,3 @@
   <%= link_to "Русский", {locale: :ru} %>
   <%= link_to "English", {locale: :en} %>
 </p>
-</body>

@@ -1,34 +1,34 @@
 <%= form_with(model: billboard_employment, local: false, url: billboard_billboard_employments_path) do |form| %>
-<% if @billboard.errors.any? %>
+  <% if @billboard.errors.any? %>
     <% @billboard.errors.full_messages.each do |message| %>
       <div class="alert alert-danger"><%= message %></div>
     <% end %>
   <% else %>
-  <div class="col-8">
-    <h2><%= t("employment.new.head") %></h2>
-    <p>
-      <%= t("employment.new.body") %>
-      <%= form.text_field(:body, {:class => "form-control"}) %>
-    </p>
-    <p>
-      <%= t("employment.new.brand") %>
-      <%= form.text_area(:brand, {:class => "form-control"}) %>
-    </p>
-    <p>
-      <%= t("employment.new.adv_type") %>
-      <%= form.select(:adv_type,BillboardEmployment::ADV_TYPES, {}, {:class => "form-control"}) %>
-    </p>
-    <p>
-      <%= t("employment.new.start_date") %>
-      <%= form.date_field(:start_date, {:class => "form-control"}) %>
-    </p>
-    <p>
-      <%= t("employment.new.duration") %>
-      <%= form.number_field(:duration, {:class => "form-control"}) %>
-    </p>
-    <div class="actions">
-      <%= form.submit t("employment.new.submit"), :class => "btn btn-success" %>
+    <div class="col-8">
+      <h2><%= t("employment.new.head") %></h2>
+      <p>
+        <%= t("employment.new.body") %>
+        <%= form.text_field(:body, {:class => "form-control"}) %>
+      </p>
+      <p>
+        <%= t("employment.new.brand") %>
+        <%= form.text_area(:brand, {:class => "form-control"}) %>
+      </p>
+      <p>
+        <%= t("employment.new.adv_type") %>
+        <%= form.select(:adv_type, BillboardEmployment::ADV_TYPES, {}, {:class => "form-control"}) %>
+      </p>
+      <p>
+        <%= t("employment.new.start_date") %>
+        <%= form.date_field(:start_date, {:class => "form-control"}) %>
+      </p>
+      <p>
+        <%= t("employment.new.duration") %>
+        <%= form.number_field(:duration, {:class => "form-control"}) %>
+      </p>
+      <div class="actions">
+        <%= form.submit t("employment.new.submit"), :class => "btn btn-success" %>
+      </div>
     </div>
-  </div>
   <% end %>
 <% end %>
