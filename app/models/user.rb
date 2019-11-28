@@ -23,16 +23,12 @@ class User < ApplicationRecord
 
   def self.get_billboards_count
     # Return how many billboards is user using
-    User.joins(:billboard_employments).where("
-    :date BETWEEN start_date AND DATE_ADD(start_date,INTERVAL duration MONTH)",
-                                             {date: Date.today}).group(:id).count
+    BillboardEmployment.joins(:user).usage_date.group("users.id").count
   end
 
   def self.get_pay_per_month
     # Return sum that user pay for month
-    User.joins(billboard_employments: [billboard: :price]).where("
-    :date BETWEEN start_date AND DATE_ADD(start_date,INTERVAL duration MONTH)",
-                                                                 {date: Date.today}).group(:id).sum(:price)
+    BillboardEmployment.joins(:user, [billboard: :price]).usage_date.group("users.id").sum(:price)
   end
 
   def get_employments_stats

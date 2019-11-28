@@ -1,7 +1,7 @@
 class Billboard < ApplicationRecord
   has_many :billboard_employments
   has_many :comments, dependent: :destroy
-  belongs_to :price, dependent: :destroy, optional: true,validate: true
+  belongs_to :price, dependent: :destroy, optional: true, validate: true
   mount_uploader :photo, AvatarUploader
   geocoded_by :get_full_address
   validates :address, presence: true, length: {minimum: 5}
@@ -56,7 +56,8 @@ class Billboard < ApplicationRecord
   def self.get_release_date
     # Return date when billboard will become free
     @date = Hash.new(0)
-    BillboardEmployment.select(:id, :billboard_id, :start_date, :duration).joins(:billboard).where.not(active: true).find_each do |employment|
+    BillboardEmployment.select(:id, :billboard_id, :start_date, :duration).
+        joins(:billboard).where.not(active: true).find_each do |employment|
       end_date = employment.start_date + employment.duration.month
       if end_date >= Date.today
         @date[employment.billboard_id] = end_date
@@ -71,8 +72,9 @@ class Billboard < ApplicationRecord
   end
 
   def self.update_params
+    # Update brand and adv_type of each billboard
     Billboard.connection.select_all(<<-SQL.squish)
-      UPDATE billboards as b 
+      UPDATE billboards as b
       JOIN billboard_employments as be
         on be.billboard_id = b.id
       SET b.adv_type = IF(CURDATE() BETWEEN be.start_date AND DATE_ADD(be.start_date,INTERVAL be.duration MONTH),
