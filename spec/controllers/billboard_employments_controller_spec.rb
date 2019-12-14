@@ -41,7 +41,6 @@ RSpec.describe BillboardEmploymentsController, type: :controller do
                                                     adv_type: "commercial",
                                                     start_date: Date.tomorrow,
                                                     duration: 1},
-                             user_id: @user.id,
                              billboard_id: 1}
       expect(response).to redirect_to(home_path)
     end
@@ -53,7 +52,6 @@ RSpec.describe BillboardEmploymentsController, type: :controller do
                                                     adv_type: "",
                                                     start_date: Date.yesterday,
                                                     duration: -1},
-                             user_id: @user.id,
                              billboard_id: 1}
       expect(response).to render_template("new")
     end
@@ -67,8 +65,7 @@ RSpec.describe BillboardEmploymentsController, type: :controller do
                                            adv_type: "commercial",
                                            billboard_id: 1,
                                            start_date: Date.tomorrow,
-                                           duration: 1,
-                                           user_id: @user.id)
+                                           duration: 1)
       employment.save
       delete :destroy, params: {billboard_id: 1, id: employment.id, user_id: @user.id}
       expect(response).to redirect_to(home_path)

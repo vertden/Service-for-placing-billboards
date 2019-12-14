@@ -50,8 +50,3 @@ production:
   <<: *default
   adapter: mysql2
   url: <%= ENV['DATABASE_URL'] %>
-#  database: Service-for-placing-billboards_production
-#  username: <%= Rails.application.credentials.db_username %>
-#  password: <%= Rails.application.credentials.db_password %>
-#  username: Service-for-placing-billboards
-#  password: <%= ENV['SERVICE-FOR-PLACING-BILLBOARDS_DATABASE_PASSWORD'] %>
