@@ -9,14 +9,6 @@ Rails.application.routes.draw do
       resources :comments
     end
     resource :profile
-    # resource :admin, only: [] do
-    #   member do
-    #     get 'billboards'
-    #     get 'users'
-    #     patch 'appoint_admin'
-    #     patch 'remove_admin'
-    #     patch 'confirm'
-    #   end
     namespace :admin do
       # member do
       get 'billboards'

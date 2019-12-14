@@ -12,6 +12,7 @@ RSpec.describe Billboard do
     end
 
   end
+
   context " method tests" do
     it "should return Minsk address" do
     billboard = Billboard.new(photo: "image",address: "Some text")
